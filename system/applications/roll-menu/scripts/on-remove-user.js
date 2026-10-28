@@ -8,7 +8,7 @@ export const _onRemoveUser = async function (event, target) {
 
   // Remove the user from the promptedRolls flag
   if (chatMessage.isOwner) {
-    chatMessage.update({ [`flags.wod5e.promptedRolls.-=${actorID}`]: null })
+    chatMessage.update({ [`flags.wod5e-mta.promptedRolls.-=${actorID}`]: null })
   } else {
     const socketData = {
       action: 'removeActor',

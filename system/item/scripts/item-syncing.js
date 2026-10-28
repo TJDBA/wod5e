@@ -2,7 +2,7 @@ export const _onSyncFromDataItem = async function (event) {
   event.preventDefault()
 
   const item = this.item
-  const dataItemId = item.getFlag('wod5e', 'dataItemId')
+  const dataItemId = item.getFlag('wod5e-mta', 'dataItemId')
 
   // Inform the user if the Data Item ID is empty.
   if (!dataItemId) {
@@ -15,13 +15,13 @@ export const _onSyncFromDataItem = async function (event) {
   for (const compendium of compendiumsList) {
     const docs = await compendium.getDocuments()
 
-    const foundItems = docs.filter((item) => item?.flags?.wod5e?.dataItemId === dataItemId)
+    const foundItems = docs.filter((item) => item?.flags?.['wod5e-mta']?.dataItemId === dataItemId)
 
     compendiumDataItems.push(...foundItems)
   }
 
   const worldDataItems = game.items.filter(
-    (item) => item.getFlag('wod5e', 'dataItemId') === dataItemId
+    (item) => item.getFlag('wod5e-mta', 'dataItemId') === dataItemId
   )
 
   const allDataItems = compendiumDataItems.concat(worldDataItems)
@@ -69,7 +69,7 @@ export const _onSyncToDataItems = async function (event) {
   event.preventDefault()
 
   const item = this.item
-  const dataItemId = item.getFlag('wod5e', 'dataItemId')
+  const dataItemId = item.getFlag('wod5e-mta', 'dataItemId')
 
   // Inform the user if the Data Item ID is empty.
   if (!dataItemId) {
@@ -84,7 +84,7 @@ export const _onSyncToDataItems = async function (event) {
 
   // Iterate through all actors and gather a list of items that match the Data Item ID
   for (const actor of actorsList) {
-    const foundItems = actor.items.filter((item) => item?.flags?.wod5e?.dataItemId === dataItemId)
+    const foundItems = actor.items.filter((item) => item?.flags?.['wod5e-mta']?.dataItemId === dataItemId)
 
     actorDataItems.push(...foundItems)
   }

@@ -8,19 +8,19 @@ export class Disciplines extends BaseDefinitionClass {
   // Run any necessary compilation on ready
   static onReady() {
     // Handle adding custom disciplines from the game settings
-    let customDisciplines = game.settings.get('wod5e', 'customDisciplines') || {}
+    let customDisciplines = game.settings.get('wod5e-mta', 'customDisciplines') || {}
 
     // Handle adding custom disciplines from any active modules
     const activeModules = game.modules.filter(
       (module) => module.active === true && module.flags.wod5e
     )
     activeModules.forEach((module) => {
-      if (module.flags.wod5e.customDisciplines) {
-        customDisciplines = customDisciplines.concat(module.flags.wod5e.customDisciplines)
+      if (module.flags['wod5e-mta'].customDisciplines) {
+        customDisciplines = customDisciplines.concat(module.flags['wod5e-mta'].customDisciplines)
 
         // Log the custom data in the console
         console.log(
-          `World of Darkness 5e | Custom Disciplines added by ${module.id}: ${JSON.stringify(module.flags.wod5e.customDisciplines)}`
+          `World of Darkness 5e | Custom Disciplines added by ${module.id}: ${JSON.stringify(module.flags['wod5e-mta'].customDisciplines)}`
         )
       }
     })

@@ -139,7 +139,7 @@ Hooks.once('init', async function () {
     })
 
     // Register the sheet with Foundry's DocumentSheetConfig
-    foundry.applications.apps.DocumentSheetConfig.registerSheet(Actor, 'wod5e', sheetClass, {
+    foundry.applications.apps.DocumentSheetConfig.registerSheet(Actor, 'wod5e-mta', sheetClass, {
       types,
       makeDefault: true
     })
@@ -156,7 +156,7 @@ Hooks.once('init', async function () {
     })
 
     // Register the sheet with Foundry's DocumentSheetConfig
-    foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, 'wod5e', sheetClass, {
+    foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, 'wod5e-mta', sheetClass, {
       types,
       makeDefault: true
     })
@@ -223,7 +223,7 @@ Hooks.once('ready', async function () {
       const { settingId, cssVariable } = settings[settingKey]
 
       // Get the current value of the setting
-      const settingValue = game.settings.get('wod5e', settingId)
+      const settingValue = game.settings.get('wod5e-mta', settingId)
 
       // Update the CSS variable
       _updateCSSVariable(settingId, cssVariable, settingValue)

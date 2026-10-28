@@ -155,7 +155,7 @@ export class WoDActor extends Actor {
     // If the actor is a player, update the default permissions to limited
     if (
       this.hasPlayerOwner &&
-      !this.getFlag('wod5e', 'manualDefaultOwnership') &&
+      !this.getFlag('wod5e-mta', 'manualDefaultOwnership') &&
       game.user.isGM &&
       !this.inCompendium
     ) {
@@ -227,7 +227,7 @@ export class WoDActor extends Actor {
 
     // If the default ownership is ever not limited, update the manualDefaultOwnership flag
     if (actor.ownership.default !== CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED) {
-      await actor.setFlag('wod5e', 'manualDefaultOwnership', true)
+      await actor.setFlag('wod5e-mta', 'manualDefaultOwnership', true)
     }
 
     // If the actor is a group...

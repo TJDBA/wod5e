@@ -28,7 +28,7 @@ export class WoDChatMessage extends ChatMessage {
     const speakerActor = this.speakerActor
     const data = this.toObject(false)
     data.content = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-      data?.flags?.wod5e?.description || this.content,
+      data?.flags?.['wod5e-mta']?.description || this.content,
       {
         rollData: this.getRollData(),
         secrets: speakerActor?.isOwner ?? game.user.isGM
@@ -53,10 +53,10 @@ export class WoDChatMessage extends ChatMessage {
       author: this.author,
 
       // Display info
-      title: this.flags?.wod5e?.title,
-      name: this.flags?.wod5e?.name,
-      description: this.flags?.wod5e?.description,
-      img: this.flags?.wod5e?.img,
+      title: this.flags?.['wod5e-mta']?.title,
+      name: this.flags?.['wod5e-mta']?.name,
+      description: this.flags?.['wod5e-mta']?.description,
+      img: this.flags?.['wod5e-mta']?.img,
       alias: this.alias,
       speakerActor,
 
@@ -76,12 +76,12 @@ export class WoDChatMessage extends ChatMessage {
       ].filterJoin(' '),
 
       // System-specific flags
-      isRollPrompt: this.getFlag('wod5e', 'isRollPrompt'),
-      promptedRolls: this.getFlag('wod5e', 'promptedRolls'),
-      valuePaths: this.getFlag('wod5e', 'valuePaths'),
-      difficulty: this.getFlag('wod5e', 'difficulty'),
+      isRollPrompt: this.getFlag('wod5e-mta', 'isRollPrompt'),
+      promptedRolls: this.getFlag('wod5e-mta', 'promptedRolls'),
+      valuePaths: this.getFlag('wod5e-mta', 'valuePaths'),
+      difficulty: this.getFlag('wod5e-mta', 'difficulty'),
       isRoll: this?.isRoll || false,
-      isExtendedRoll: this.getFlag('wod5e', 'isExtendedRoll')
+      isExtendedRoll: this.getFlag('wod5e-mta', 'isExtendedRoll')
     }
 
     // Render additional message data
@@ -109,7 +109,7 @@ export class WoDChatMessage extends ChatMessage {
     Hooks.callAll('renderChatMessageHTML', this, html, this.messageData)
 
     // Get whether descriptions should auto-collapse for this user or not and apply the styling
-    const autoCollapse = game.settings.get('wod5e', 'autoCollapseDescriptions')
+    const autoCollapse = game.settings.get('wod5e-mta', 'autoCollapseDescriptions')
     if (!autoCollapse) {
       const collapsibleContent = html.querySelector('.collapsible-content')
       if (collapsibleContent) collapsibleContent.style.maxHeight = 'unset'

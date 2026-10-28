@@ -3,7 +3,7 @@
  * @return {Promise}
  */
 export const loadDiceSoNice = async function (dice3d) {
-  dice3d.addSystem({ id: 'wod5e', name: 'wod5e' }, true)
+  dice3d.addSystem({ id: 'wod5e-mta', name: 'wod5e-mta' }, true)
   dice3d.addDicePreset(
     {
       type: 'dm',
@@ -32,7 +32,7 @@ export const loadDiceSoNice = async function (dice3d) {
         'systems/wod5e-mta/assets/icons/dsn/normal-crit-dsn-bump.png'
       ],
       colorset: 'black',
-      system: 'wod5e'
+      system: 'wod5e-mta'
     },
     'd10'
   )
@@ -65,7 +65,7 @@ export const loadDiceSoNice = async function (dice3d) {
         'systems/wod5e-mta/assets/icons/dsn/normal-crit-dsn-bump.png'
       ],
       colorset: 'black',
-      system: 'wod5e'
+      system: 'wod5e-mta'
     },
     'd10'
   )
@@ -119,7 +119,7 @@ export const loadDiceSoNice = async function (dice3d) {
         'systems/wod5e-mta/assets/icons/dsn/red-crit-dsn-bump.png'
       ],
       colorset: 'hunger',
-      system: 'wod5e'
+      system: 'wod5e-mta'
     },
     'd10'
   )
@@ -152,7 +152,7 @@ export const loadDiceSoNice = async function (dice3d) {
         'systems/wod5e-mta/assets/icons/dsn/hunter-normal-crit-dsn.png'
       ],
       colorset: 'hunterdice',
-      system: 'wod5e'
+      system: 'wod5e-mta'
     },
     'd10'
   )
@@ -229,7 +229,7 @@ export const loadDiceSoNice = async function (dice3d) {
         'systems/wod5e-mta/assets/icons/dsn/hunter-normal-crit-dsn.png'
       ],
       colorset: 'black',
-      system: 'wod5e'
+      system: 'wod5e-mta'
     },
     'd10'
   )
@@ -262,7 +262,7 @@ export const loadDiceSoNice = async function (dice3d) {
         'systems/wod5e-mta/assets/icons/dsn/werewolf-crit-dsn-bump.png'
       ],
       colorset: 'werewolf',
-      system: 'wod5e'
+      system: 'wod5e-mta'
     },
     'd10'
   )
@@ -295,7 +295,7 @@ export const loadDiceSoNice = async function (dice3d) {
         'systems/wod5e-mta/assets/icons/dsn/werewolf-crit-dsn-bump.png'
       ],
       colorset: 'rage',
-      system: 'wod5e'
+      system: 'wod5e-mta'
     },
     'd10'
   )

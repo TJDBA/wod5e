@@ -9,12 +9,12 @@ export class Systems extends BaseDefinitionClass {
     )
     let customSystems = []
     activeModules.forEach((module) => {
-      if (module.flags.wod5e.customSystems) {
-        customSystems = customSystems.concat(module.flags.wod5e.customSystems)
+      if (module.flags['wod5e-mta'].customSystems) {
+        customSystems = customSystems.concat(module.flags['wod5e-mta'].customSystems)
 
         // Log the custom data in the console
         console.log(
-          `World of Darkness 5e | Custom Systems added by ${module.id}: ${JSON.stringify(module.flags.wod5e.customSystems)}`
+          `World of Darkness 5e | Custom Systems added by ${module.id}: ${JSON.stringify(module.flags['wod5e-mta'].customSystems)}`
         )
       }
     })

@@ -8,19 +8,19 @@ export class Edges extends BaseDefinitionClass {
   // Run any necessary compilation on ready
   static onReady() {
     // Handle adding custom disciplines from the game settings
-    let customEdges = game.settings.get('wod5e', 'customEdges') || {}
+    let customEdges = game.settings.get('wod5e-mta', 'customEdges') || {}
 
     // Handle adding custom disciplines from any active modules
     const activeModules = game.modules.filter(
       (module) => module.active === true && module.flags.wod5e
     )
     activeModules.forEach((module) => {
-      if (module.flags.wod5e.customEdges) {
-        customEdges = customEdges.concat(module.flags.wod5e.customEdges)
+      if (module.flags['wod5e-mta'].customEdges) {
+        customEdges = customEdges.concat(module.flags['wod5e-mta'].customEdges)
 
         // Log the custom data in the console
         console.log(
-          `World of Darkness 5e | Custom Edges added by ${module.id}: ${JSON.stringify(module.flags.wod5e.customEdges)}`
+          `World of Darkness 5e | Custom Edges added by ${module.id}: ${JSON.stringify(module.flags['wod5e-mta'].customEdges)}`
         )
       }
     })

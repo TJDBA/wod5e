@@ -70,9 +70,9 @@ export class RollMenuApplication extends HandlebarsApplicationMixin(ApplicationV
 
   async _prepareContext() {
     const data = await super._prepareContext()
-    const rollMenuSavedRolls = game.users.current.getFlag('wod5e', 'rollMenuSavedRolls') || {}
+    const rollMenuSavedRolls = game.users.current.getFlag('wod5e-mta', 'rollMenuSavedRolls') || {}
 
-    data.activeRollID = game.users.current.getFlag('wod5e', 'rollMenuActiveRoll') || ''
+    data.activeRollID = game.users.current.getFlag('wod5e-mta', 'rollMenuActiveRoll') || ''
     data.allRolls = rollMenuSavedRolls
 
     // Simple and performant way to snip out the 'temp' key here
@@ -110,16 +110,16 @@ export class RollMenuApplication extends HandlebarsApplicationMixin(ApplicationV
   static async applicationHandler(event, form, formData) {
     const data = formData.object
 
-    let activeRoll = game.users.current.getFlag('wod5e', 'rollMenuActiveRoll') || ''
+    let activeRoll = game.users.current.getFlag('wod5e-mta', 'rollMenuActiveRoll') || ''
 
     // If there's no active roll, save to a 'temp' ID that's used for the roll builder
     if (!activeRoll) {
       activeRoll = 'temp'
-      game.users.current.setFlag('wod5e', 'rollMenuActiveRoll', activeRoll)
+      game.users.current.setFlag('wod5e-mta', 'rollMenuActiveRoll', activeRoll)
     }
 
     // If there is an active roll, we can update it as input fields are updated
-    const savedRolls = game.users.current.getFlag('wod5e', 'rollMenuSavedRolls') || {}
+    const savedRolls = game.users.current.getFlag('wod5e-mta', 'rollMenuSavedRolls') || {}
 
     // Ensure that the savedRolls object exists, then add/update it
     if (savedRolls) {
@@ -136,7 +136,7 @@ export class RollMenuApplication extends HandlebarsApplicationMixin(ApplicationV
     }
 
     // Save the mutated object
-    await game.users.current.setFlag('wod5e', 'rollMenuSavedRolls', savedRolls)
+    await game.users.current.setFlag('wod5e-mta', 'rollMenuSavedRolls', savedRolls)
 
     // Re-render the application
     this.render()

@@ -112,7 +112,7 @@ export const loadHelpers = async function () {
   })
 
   Handlebars.registerHelper('sortAbilities', function (unordered = {}) {
-    if (!game.settings.get('wod5e', 'chatRollerSortAbilities')) {
+    if (!game.settings.get('wod5e-mta', 'chatRollerSortAbilities')) {
       return unordered
     }
     return Object.keys(unordered)

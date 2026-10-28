@@ -16,7 +16,7 @@ import { cssVariablesRecord } from './update-css-variables.js'
  */
 export const loadSettings = async function () {
   // Whether definitions will be sorted alphabetically based on the currently selected language
-  game.settings.register('wod5e', 'sortDefAlphabetically', {
+  game.settings.register('wod5e-mta', 'sortDefAlphabetically', {
     name: game.i18n.localize('WOD5E.Settings.SortDefAlphabetically'),
     hint: game.i18n.localize('WOD5E.Settings.SortDefAlphabeticallyHint'),
     scope: 'world',
@@ -35,7 +35,7 @@ export const loadSettings = async function () {
   })
 
   // Deactivate Vampire Revised Font
-  game.settings.register('wod5e', 'disableVampireFont', {
+  game.settings.register('wod5e-mta', 'disableVampireFont', {
     name: game.i18n.localize('WOD5E.Settings.DisableVampireFont'),
     hint: game.i18n.localize('WOD5E.Settings.DisableVampireFontHint'),
     scope: 'client',
@@ -46,7 +46,7 @@ export const loadSettings = async function () {
   })
 
   // Whether the actor banner will appear on sheets or not
-  game.settings.register('wod5e', 'actorBanner', {
+  game.settings.register('wod5e-mta', 'actorBanner', {
     name: game.i18n.localize('WOD5E.Settings.ActorBanner'),
     hint: game.i18n.localize('WOD5E.Settings.ActorBannerHint'),
     scope: 'client',
@@ -64,7 +64,7 @@ export const loadSettings = async function () {
   */
 
   // Automation Menu
-  game.settings.registerMenu('wod5e', 'automationMenu', {
+  game.settings.registerMenu('wod5e-mta', 'automationMenu', {
     name: game.i18n.localize('WOD5E.Settings.AutomationSettings'),
     hint: game.i18n.localize('WOD5E.Settings.AutomationSettingsHint'),
     label: game.i18n.localize('WOD5E.Settings.AutomationSettings'),
@@ -74,7 +74,7 @@ export const loadSettings = async function () {
   })
 
   // Disable All Automation
-  game.settings.register('wod5e', 'disableAutomation', {
+  game.settings.register('wod5e-mta', 'disableAutomation', {
     name: game.i18n.localize('WOD5E.Settings.DisableAutomation'),
     hint: game.i18n.localize('WOD5E.Settings.DisableAutomationHint'),
     scope: 'world',
@@ -83,17 +83,17 @@ export const loadSettings = async function () {
     type: Boolean,
     onChange: async (value) => {
       if (value) {
-        await game.settings.set('wod5e', 'automatedWillpower', false)
-        await game.settings.set('wod5e', 'automatedHunger', false)
-        await game.settings.set('wod5e', 'automatedOblivion', false)
-        await game.settings.set('wod5e', 'automatedRage', false)
-        await game.settings.set('wod5e', 'automatedParadox', false)
+        await game.settings.set('wod5e-mta', 'automatedWillpower', false)
+        await game.settings.set('wod5e-mta', 'automatedHunger', false)
+        await game.settings.set('wod5e-mta', 'automatedOblivion', false)
+        await game.settings.set('wod5e-mta', 'automatedRage', false)
+        await game.settings.set('wod5e-mta', 'automatedParadox', false)
       } else {
-        await game.settings.set('wod5e', 'automatedWillpower', true)
-        await game.settings.set('wod5e', 'automatedHunger', true)
-        await game.settings.set('wod5e', 'automatedOblivion', true)
-        await game.settings.set('wod5e', 'automatedRage', true)
-        await game.settings.set('wod5e', 'automatedParadox', true)
+        await game.settings.set('wod5e-mta', 'automatedWillpower', true)
+        await game.settings.set('wod5e-mta', 'automatedHunger', true)
+        await game.settings.set('wod5e-mta', 'automatedOblivion', true)
+        await game.settings.set('wod5e-mta', 'automatedRage', true)
+        await game.settings.set('wod5e-mta', 'automatedParadox', true)
       }
 
       // Re-render the automation window once settings are updated
@@ -107,7 +107,7 @@ export const loadSettings = async function () {
   })
 
   // Automated Willpower
-  game.settings.register('wod5e', 'automatedWillpower', {
+  game.settings.register('wod5e-mta', 'automatedWillpower', {
     name: game.i18n.localize('WOD5E.Settings.AutomateWillpower'),
     hint: game.i18n.localize('WOD5E.Settings.AutomateWillpowerHint'),
     scope: 'world',
@@ -117,7 +117,7 @@ export const loadSettings = async function () {
   })
 
   // Automated Hunger
-  game.settings.register('wod5e', 'automatedHunger', {
+  game.settings.register('wod5e-mta', 'automatedHunger', {
     name: game.i18n.localize('WOD5E.Settings.AutomateHunger'),
     hint: game.i18n.localize('WOD5E.Settings.AutomateHungerHint'),
     scope: 'world',
@@ -127,7 +127,7 @@ export const loadSettings = async function () {
   })
 
   // Automated Oblivion Rolls
-  game.settings.register('wod5e', 'automatedOblivion', {
+  game.settings.register('wod5e-mta', 'automatedOblivion', {
     name: game.i18n.localize('WOD5E.Settings.AutomateOblivion'),
     hint: game.i18n.localize('WOD5E.Settings.AutomateOblivionHint'),
     scope: 'world',
@@ -137,7 +137,7 @@ export const loadSettings = async function () {
   })
 
   // Automated Rage
-  game.settings.register('wod5e', 'automatedRage', {
+  game.settings.register('wod5e-mta', 'automatedRage', {
     name: game.i18n.localize('WOD5E.Settings.AutomateRage'),
     hint: game.i18n.localize('WOD5E.Settings.AutomateRageHint'),
     scope: 'world',
@@ -147,7 +147,7 @@ export const loadSettings = async function () {
   })
 
   // Automated Paradox
-  game.settings.register('wod5e', 'automatedParadox', {
+  game.settings.register('wod5e-mta', 'automatedParadox', {
     name: game.i18n.localize('WOD5E.Settings.AutomateParadox'),
     hint: game.i18n.localize('WOD5E.Settings.AutomateParadoxHint'),
     scope: 'world',
@@ -161,7 +161,7 @@ export const loadSettings = async function () {
   */
 
   // Register the storyteller menu
-  game.settings.registerMenu('wod5e', 'storytellerMenu', {
+  game.settings.registerMenu('wod5e-mta', 'storytellerMenu', {
     name: game.i18n.localize('WOD5E.Settings.StorytellerMenu'),
     hint: game.i18n.localize('WOD5E.Settings.StorytellerMenuHint'),
     label: game.i18n.localize('WOD5E.Settings.StorytellerMenu'),
@@ -195,7 +195,7 @@ export const loadSettings = async function () {
 
   for (const [, value] of Object.entries(modCustomList)) {
     // Register the modification
-    game.settings.register('wod5e', `modified${value.defCategory}`, {
+    game.settings.register('wod5e-mta', `modified${value.defCategory}`, {
       name: game.i18n.localize(`WOD5E.Settings.Modified${value.defCategory}`),
       hint: game.i18n.localize(`WOD5E.Settings.Modified${value.defCategory}Hint`),
       scope: 'world',
@@ -212,7 +212,7 @@ export const loadSettings = async function () {
     })
 
     // Register the custom subtype
-    game.settings.register('wod5e', `custom${value.defCategory}`, {
+    game.settings.register('wod5e-mta', `custom${value.defCategory}`, {
       name: game.i18n.localize(`WOD5E.Settings.Custom${value.defCategory}`),
       hint: game.i18n.localize(`WOD5E.Settings.Custom${value.defCategory}Hint`),
       scope: 'world',
@@ -233,7 +233,7 @@ export const loadSettings = async function () {
   }
 
   // Automatically collapse chat message descriptions
-  game.settings.register('wod5e', 'autoCollapseDescriptions', {
+  game.settings.register('wod5e-mta', 'autoCollapseDescriptions', {
     name: game.i18n.localize('WOD5E.Settings.AutoCollapseDescriptions'),
     hint: game.i18n.localize('WOD5E.Settings.AutoCollapseDescriptionsHint'),
     scope: 'client',
@@ -243,7 +243,7 @@ export const loadSettings = async function () {
   })
 
   // Override for the default actor header image
-  game.settings.register('wod5e', 'actorHeaderOverride', {
+  game.settings.register('wod5e-mta', 'actorHeaderOverride', {
     name: game.i18n.localize('WOD5E.Settings.ActorHeaderOverride'),
     hint: game.i18n.localize('WOD5E.Settings.ActorHeaderOverrideHint'),
     scope: 'world',
@@ -258,7 +258,7 @@ export const loadSettings = async function () {
   })
 
   // Override for the default actor backgrounds
-  game.settings.register('wod5e', 'actorBackgroundOverride', {
+  game.settings.register('wod5e-mta', 'actorBackgroundOverride', {
     name: game.i18n.localize('WOD5E.Settings.ActorBackgroundOverride'),
     hint: game.i18n.localize('WOD5E.Settings.ActorBackgroundOverrideHint'),
     scope: 'world',
@@ -273,7 +273,7 @@ export const loadSettings = async function () {
   })
 
   // Override for the "Gain" XP Icon
-  game.settings.register('wod5e', 'gainXpIconOverride', {
+  game.settings.register('wod5e-mta', 'gainXpIconOverride', {
     name: game.i18n.localize('WOD5E.Settings.GainXpIconOverride'),
     hint: game.i18n.localize('WOD5E.Settings.GainXpIconOverrideHint'),
     scope: 'world',
@@ -291,7 +291,7 @@ export const loadSettings = async function () {
   })
 
   // Override for the "Spend" XP Icon
-  game.settings.register('wod5e', 'spendXpIconOverride', {
+  game.settings.register('wod5e-mta', 'spendXpIconOverride', {
     name: game.i18n.localize('WOD5E.Settings.SpendXpIconOverride'),
     hint: game.i18n.localize('WOD5E.Settings.SpendXpIconOverrideHint'),
     scope: 'world',
@@ -309,7 +309,7 @@ export const loadSettings = async function () {
   })
 
   // Override for the "Neutral" XP Icon
-  game.settings.register('wod5e', 'neutralXpIconOverride', {
+  game.settings.register('wod5e-mta', 'neutralXpIconOverride', {
     name: game.i18n.localize('WOD5E.Settings.NeutralXpIconOverride'),
     hint: game.i18n.localize('WOD5E.Settings.NeutralXpIconOverrideHint'),
     scope: 'world',
@@ -327,7 +327,7 @@ export const loadSettings = async function () {
   })
 
   // World Version, only really needed by developers
-  game.settings.register('wod5e', 'worldVersion', {
+  game.settings.register('wod5e-mta', 'worldVersion', {
     name: game.i18n.localize('WOD5E.Settings.WorldVersion'),
     hint: game.i18n.localize('WOD5E.Settings.WorldVersionHint'),
     scope: 'world',
@@ -337,7 +337,7 @@ export const loadSettings = async function () {
   })
 
   // Whether the user declined the migration or not
-  game.settings.register('wod5e', 'declinedMigration', {
+  game.settings.register('wod5e-mta', 'declinedMigration', {
     scope: 'world',
     config: false,
     default: false,
@@ -345,7 +345,7 @@ export const loadSettings = async function () {
   })
 
   // Whether the world has finished the settings migration or not
-  game.settings.register('wod5e', 'settingsMigrationComplete', {
+  game.settings.register('wod5e-mta', 'settingsMigrationComplete', {
     scope: 'world',
     config: false,
     default: false,
@@ -357,7 +357,7 @@ export const loadSettings = async function () {
   */
 
   // Register the splat colors menu
-  game.settings.registerMenu('wod5e', 'splatColorsMenu', {
+  game.settings.registerMenu('wod5e-mta', 'splatColorsMenu', {
     name: game.i18n.localize('WOD5E.Settings.SplatColorsMenu'),
     hint: game.i18n.localize('WOD5E.Settings.SplatColorsHint'),
     label: game.i18n.localize('WOD5E.Settings.SplatColorsMenu'),
@@ -375,7 +375,7 @@ export const loadSettings = async function () {
       const { settingId, defaultColor } = settings[settingKey]
 
       // Register the setting
-      game.settings.register('wod5e', settingId, {
+      game.settings.register('wod5e-mta', settingId, {
         scope: 'world',
         config: false,
         default: defaultColor,
@@ -397,7 +397,7 @@ function _rerenderStorytellerWindow() {
  * Set whether the system uses the vampireRevised font for headers or not
  */
 export const _updateHeaderFontPreference = async function () {
-  const clientSetting = game.settings.get('wod5e', 'disableVampireFont')
+  const clientSetting = game.settings.get('wod5e-mta', 'disableVampireFont')
 
   if (clientSetting) {
     // Remove the class from the document body
@@ -412,9 +412,9 @@ export const _updateHeaderFontPreference = async function () {
  * Update the XP icons
  */
 export const _updateXpIconOverrides = async function () {
-  const spendIcon = game.settings.get('wod5e', 'spendXpIconOverride')
-  const gainIcon = game.settings.get('wod5e', 'gainXpIconOverride')
-  const neutralIcon = game.settings.get('wod5e', 'neutralXpIconOverride')
+  const spendIcon = game.settings.get('wod5e-mta', 'spendXpIconOverride')
+  const gainIcon = game.settings.get('wod5e-mta', 'gainXpIconOverride')
+  const neutralIcon = game.settings.get('wod5e-mta', 'neutralXpIconOverride')
 
   if (spendIcon) {
     document.documentElement.style.setProperty('--xp-spend-icon', `url("/${spendIcon}")`)

@@ -151,15 +151,15 @@ export const _updateCSSVariable = async (settingName, cssVariableName, newColor)
   if (!newColor || !validColor) {
     const defaultColor = game.settings.settings.get(`wod5e.${settingName}`).default
     document.documentElement.style.setProperty(cssVariableName, defaultColor)
-    game.settings.set('wod5e', settingName, defaultColor)
+    game.settings.set('wod5e-mta', settingName, defaultColor)
   } else {
     // Update the variable with the new color
     document.documentElement.style.setProperty(cssVariableName, newColor)
 
     // Only update the setting if we need to; this is mainly for the initial load, so we're
     // not unnecessarily re-setting a variable without changes
-    if (newColor !== game.settings.get('wod5e', settingName)) {
-      game.settings.set('wod5e', settingName, newColor)
+    if (newColor !== game.settings.get('wod5e-mta', settingName)) {
+      game.settings.set('wod5e-mta', settingName, newColor)
     }
   }
 }

@@ -2,8 +2,8 @@ export const _onCopyRoll = async function (event) {
   event.preventDefault()
 
   const userId = game.users.current.id
-  const savedRolls = await game.users.current.getFlag('wod5e', 'rollMenuSavedRolls')
-  const rollId = await game.users.current.getFlag('wod5e', 'rollMenuActiveRoll')
+  const savedRolls = await game.users.current.getFlag('wod5e-mta', 'rollMenuSavedRolls')
+  const rollId = await game.users.current.getFlag('wod5e-mta', 'rollMenuActiveRoll')
   const activeRollObject = savedRolls[rollId]
 
   const dataId = `${userId}.${rollId}`

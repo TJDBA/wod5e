@@ -8,19 +8,19 @@ export class Skills extends BaseDefinitionClass {
   // Run any necessary compilation on ready
   static onReady() {
     // Handle adding custom disciplines from the game settings
-    let customSkills = game.settings.get('wod5e', 'customSkills') || {}
+    let customSkills = game.settings.get('wod5e-mta', 'customSkills') || {}
 
     // Handle adding custom disciplines from any active modules
     const activeModules = game.modules.filter(
       (module) => module.active === true && module.flags.wod5e
     )
     activeModules.forEach((module) => {
-      if (module.flags.wod5e.customSkills) {
-        customSkills = customSkills.concat(module.flags.wod5e.customSkills)
+      if (module.flags['wod5e-mta'].customSkills) {
+        customSkills = customSkills.concat(module.flags['wod5e-mta'].customSkills)
 
         // Log the custom data in the console
         console.log(
-          `World of Darkness 5e | Custom Skills added by ${module.id}: ${JSON.stringify(module.flags.wod5e.customSkills)}`
+          `World of Darkness 5e | Custom Skills added by ${module.id}: ${JSON.stringify(module.flags['wod5e-mta'].customSkills)}`
         )
       }
     })

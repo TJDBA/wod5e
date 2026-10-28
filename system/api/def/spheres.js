@@ -8,19 +8,19 @@ export class Spheres extends BaseDefinitionClass {
   // Run any necessary compilation on ready
   static onReady() {
     // Handle adding custom spheres from the game settings
-    let customSpheres = game.settings.get('wod5e', 'customSpheres') || {}
+    let customSpheres = game.settings.get('wod5e-mta', 'customSpheres') || {}
 
     // Handle adding custom spheres from any active modules
     const activeModules = game.modules.filter(
-      (module) => module.active === true && module.flags.wod5e
+      (module) => module.active === true && module.flags['wod5e-mta']
     )
     activeModules.forEach((module) => {
-      if (module.flags.wod5e.customSpheres) {
-        customSpheres = customSpheres.concat(module.flags.wod5e.customSpheres)
+      if (module.flags['wod5e-mta'].customSpheres) {
+        customSpheres = customSpheres.concat(module.flags['wod5e-mta'].customSpheres)
 
         // Log the custom data in the console
         console.log(
-          `World of Darkness 5e | Custom Spheres added by ${module.id}: ${JSON.stringify(module.flags.wod5e.customSpheres)}`
+          `World of Darkness 5e | Custom Spheres added by ${module.id}: ${JSON.stringify(module.flags['wod5e-mta'].customSpheres)}`
         )
       }
     })

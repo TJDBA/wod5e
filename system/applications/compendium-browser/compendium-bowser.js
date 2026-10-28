@@ -129,7 +129,7 @@ export class CompendiumBrowserApplication extends HandlebarsApplicationMixin(App
   async _prepareContext() {
     const data = await super._prepareContext()
     const currentUser = game.users.current
-    const compendiumBrowserConfig = currentUser?.flags?.wod5e?.compendiumBrowser
+    const compendiumBrowserConfig = currentUser?.flags?.['wod5e-mta']?.compendiumBrowser
 
     // Filter down to which ones are enabled and map to an array of strings
     data.splatFilterStatus = this.filters.splats.open

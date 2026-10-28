@@ -33,7 +33,7 @@ export class SplatColorsMenu extends FormApplication {
         const { settingId } = settings[settingKey]
 
         // Get the setting and assign it, making it available within the menu
-        data[settingId] = game.settings.get('wod5e', settingId)
+        data[settingId] = game.settings.get('wod5e-mta', settingId)
       })
     })
 

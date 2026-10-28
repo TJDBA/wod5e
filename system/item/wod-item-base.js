@@ -139,7 +139,7 @@ export class WoDItemBase extends HandlebarsApplicationMixin(
 
       gamesystem: itemData.gamesystem || 'mortal',
 
-      dataItemId: item.getFlag('wod5e', 'dataItemId') || '',
+      dataItemId: item.getFlag('wod5e-mta', 'dataItemId') || '',
 
       sourcebook: item.system.source.book,
       pageNumber: item.system.source.page

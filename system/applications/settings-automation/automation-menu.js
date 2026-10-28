@@ -19,11 +19,11 @@ export class AutomationMenu extends FormApplication {
     const data = await super.getData()
 
     // Encrich editor content
-    data.disableAutomation = game.settings.get('wod5e', 'disableAutomation')
-    data.automatedWillpower = game.settings.get('wod5e', 'automatedWillpower')
-    data.automatedHunger = game.settings.get('wod5e', 'automatedHunger')
-    data.automatedOblivion = game.settings.get('wod5e', 'automatedOblivion')
-    data.automatedRage = game.settings.get('wod5e', 'automatedRage')
+    data.disableAutomation = game.settings.get('wod5e-mta', 'disableAutomation')
+    data.automatedWillpower = game.settings.get('wod5e-mta', 'automatedWillpower')
+    data.automatedHunger = game.settings.get('wod5e-mta', 'automatedHunger')
+    data.automatedOblivion = game.settings.get('wod5e-mta', 'automatedOblivion')
+    data.automatedRage = game.settings.get('wod5e-mta', 'automatedRage')
 
     return data
   }
@@ -41,7 +41,7 @@ export class AutomationMenu extends FormApplication {
           const settingId = data.id
           const value = event.target.checked
 
-          game.settings.set('wod5e', settingId, value)
+          game.settings.set('wod5e-mta', settingId, value)
         }
       })
     })

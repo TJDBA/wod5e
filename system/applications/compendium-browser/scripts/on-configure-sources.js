@@ -1,6 +1,6 @@
 export const _onConfigureSources = async function () {
   const currentUser = game.users.current
-  const currentSources = currentUser.flags?.wod5e?.compendiumBrowser?.sources || {}
+  const currentSources = currentUser.flags?.['wod5e-mta']?.compendiumBrowser?.sources || {}
 
   // Below, we get all the sources that are relevant to the current instance;
   // aka, all compendiums in the currently active game
@@ -93,7 +93,7 @@ export const _onConfigureSources = async function () {
   if (updatedSources) {
     // Update the sources on the user flag
     await currentUser.update({
-      ['flags.wod5e.compendiumBrowser.sources']: updatedSources
+      ['flags.wod5e-mta.compendiumBrowser.sources']: updatedSources
     })
 
     // Re-render the compendium browser once settings are updated if it's open
