@@ -37,7 +37,7 @@ export const paradoxDiceFaces = {
   success: 'paradox-success.png',
   failure: 'paradox-failure.png',
   critical: 'paradox-critical.png',
-  backlash: 'backlash-failure.png'
+  backlash: 'mage-crit-failure.png'
 }
 
 /**
