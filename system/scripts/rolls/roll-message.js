@@ -166,7 +166,7 @@ export async function generateRollMessageData({
 
       // Increase the number of critfails collected across the dice
       if (
-        (dieResult === 'criticalFailure' || dieResult === 'bestial' || dieResult === 'brutal') &&
+        (dieResult === 'criticalFailure' || dieResult === 'bestial' || dieResult === 'brutal' || dieResult === 'backlash') &&
         !die.discarded
       ) {
         critFails++
