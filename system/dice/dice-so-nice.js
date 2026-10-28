@@ -684,7 +684,7 @@ export const loadDiceSoNice = async function (dice3d) {
   )
 
   // Register the Mage basic (da) and Paradox (dp) dice across every wod5e DSN system
-  for (const dsnSystem of ['wod5e', 'vtm5x', 'vtm5y']) {
+  for (const dsnSystem of ['wod5e-mta', 'vtm5x', 'vtm5y']) {
     dice3d.addDicePreset(
       {
         type: 'da',
@@ -712,7 +712,7 @@ export const loadDiceSoNice = async function (dice3d) {
           'systems/wod5e-mta/assets/icons/dsn/mage-success-dsn-bump.png',
           'systems/wod5e-mta/assets/icons/dsn/mage-crit-dsn-bump.png'
         ],
-        colorset: dsnSystem === 'wod5e' ? 'mage' : undefined,
+        colorset: dsnSystem === 'wod5e-mta' ? 'mage' : undefined,
         system: dsnSystem
       },
       'd10'
@@ -745,7 +745,7 @@ export const loadDiceSoNice = async function (dice3d) {
           'systems/wod5e-mta/assets/icons/dsn/paradox-success-dsn-bump.png',
           'systems/wod5e-mta/assets/icons/dsn/paradox-crit-dsn-bump.png'
         ],
-        colorset: dsnSystem === 'wod5e' ? 'paradox' : undefined,
+        colorset: dsnSystem === 'wod5e-mta' ? 'paradox' : undefined,
         system: dsnSystem
       },
       'd10'
