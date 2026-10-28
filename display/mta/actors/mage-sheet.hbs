@@ -3,13 +3,13 @@
     <div class="header-fields">
         <div class="header-fields-left">
             {{!-- Health Tracker --}}
-            {{> "systems/wod5e/display/shared/actors/parts/health.hbs"}}
+            {{> "systems/wod5e-mta/display/shared/actors/parts/health.hbs"}}
             {{!-- Willpower Tracker --}}
-            {{> "systems/wod5e/display/shared/actors/parts/willpower.hbs"}}
+            {{> "systems/wod5e-mta/display/shared/actors/parts/willpower.hbs"}}
         </div>
     </div>
     <!-- Middle of the header -->
-    {{> "systems/wod5e/display/shared/actors/parts/header-profile.hbs"}}
+    {{> "systems/wod5e-mta/display/shared/actors/parts/header-profile.hbs"}}
     <div class="header-fields">
         <div class="header-fields-right">
             <div class="flexcol">
@@ -18,7 +18,7 @@
                         <div class="flexcol shared-row">
                             <label class="resource-label field-header">{{localize 'WOD5E.MTA.Faction'}}</label>
                             <div class="resource resource-content">
-                                {{> "systems/wod5e/display/shared/actors/partials/dynamic-item-display.hbs" item=faction type="faction"}}
+                                {{> "systems/wod5e-mta/display/shared/actors/partials/dynamic-item-display.hbs" item=faction type="faction"}}
                             </div>
                         </div>
                     </div>
@@ -26,8 +26,8 @@
                 <div class="flexcol field-section">
                     <label class="resource-label field-header">{{localize "WOD5E.MTA.Paradox"}}</label>
                     <div class="flexrow">
-                        {{> "systems/wod5e/display/mta/actors/parts/paradox.hbs"}}
-                        {{> "systems/wod5e/display/mta/actors/parts/paradox-check.hbs"}}
+                        {{> "systems/wod5e-mta/display/mta/actors/parts/paradox.hbs"}}
+                        {{> "systems/wod5e-mta/display/mta/actors/parts/paradox-check.hbs"}}
                     </div>
                 </div>
             </div>

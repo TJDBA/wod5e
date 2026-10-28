@@ -52,7 +52,7 @@ export const _onHubrisRoll = async function (event) {
           flags: {
             wod5e: {
               name: game.i18n.localize('WOD5E.MTA.HubrisFailed'),
-              img: 'systems/wod5e/assets/icons/dice/mage/paradox-failure.png',
+              img: 'systems/wod5e-mta/assets/icons/dice/mage/paradox-failure.png',
               description: game.i18n.format('WOD5E.MTA.HubrisFailedDescription', {
                 actor: actor.name
               })

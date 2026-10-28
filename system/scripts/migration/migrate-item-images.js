@@ -15,8 +15,8 @@ export const MigrateItemImages = async function () {
     let hasFixedItems = false
 
     for (const item of actorItems) {
-      // Check if there are any instances of /systems/wod5e/assets/icons/powers/ in the actor data
-      if (countInstances(item.img, 'systems/wod5e/assets/icons/powers/') > 0) {
+      // Check if there are any instances of /systems/wod5e-mta/assets/icons/powers/ in the actor data
+      if (countInstances(item.img, 'systems/wod5e-mta/assets/icons/powers/') > 0) {
         hasFixedItems = true
 
         // Create a new object with the updated 'img' property
@@ -25,7 +25,7 @@ export const MigrateItemImages = async function () {
           ...item.toObject(),
           img: item.img.replace(
             /\/systems\/wod5e\/assets\/icons\/powers\//,
-            'systems/wod5e/assets/icons/items/'
+            'systems/wod5e-mta/assets/icons/items/'
           )
         }
 

@@ -6,7 +6,7 @@ export class SplatColorsMenu extends FormApplication {
       title: game.i18n.localize('WOD5E.Settings.SplatColorsMenu'),
       id: 'wod5e-splat-colors',
       classes: ['wod5e'],
-      template: 'systems/wod5e/display/ui/splat-colors-menu.hbs',
+      template: 'systems/wod5e-mta/display/ui/splat-colors-menu.hbs',
       width: 500,
       height: 450,
       resizable: true,

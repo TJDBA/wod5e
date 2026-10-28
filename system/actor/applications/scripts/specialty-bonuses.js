@@ -1,7 +1,7 @@
 import { Skills } from '../../../api/def/skills.js'
 
 const bonusTemplate =
-  'systems/wod5e/display/shared/applications/skill-application/parts/specialty-display.hbs'
+  'systems/wod5e-mta/display/shared/applications/skill-application/parts/specialty-display.hbs'
 
 export const _onAddModifier = async function (event) {
   event.preventDefault()

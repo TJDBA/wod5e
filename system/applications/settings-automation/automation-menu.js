@@ -4,7 +4,7 @@ export class AutomationMenu extends FormApplication {
       title: game.i18n.localize('WOD5E.Settings.AutomationSettings'),
       id: 'wod5e-automation',
       classes: ['wod5e'],
-      template: 'systems/wod5e/display/ui/automation-menu.hbs',
+      template: 'systems/wod5e-mta/display/ui/automation-menu.hbs',
       width: 500,
       height: 'auto',
       resizable: true,

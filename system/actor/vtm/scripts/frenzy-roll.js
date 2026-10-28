@@ -67,7 +67,7 @@ export const _onFrenzyRoll = async function (event) {
             flags: {
               wod5e: {
                 name: game.i18n.localize('WOD5E.VTM.ResistingFrenzyFailed'),
-                img: 'systems/wod5e/assets/icons/dice/vampire/bestial-failure.png',
+                img: 'systems/wod5e-mta/assets/icons/dice/vampire/bestial-failure.png',
                 description: game.i18n.format('WOD5E.VTM.ResistingFrenzyFailedDescription', {
                   actor: actor.name
                 })
@@ -79,7 +79,7 @@ export const _onFrenzyRoll = async function (event) {
             flags: {
               wod5e: {
                 name: game.i18n.localize('WOD5E.VTM.ResistingFrenzySuccess'),
-                img: 'systems/wod5e/assets/icons/dice/vampire/bestial-failure.png',
+                img: 'systems/wod5e-mta/assets/icons/dice/vampire/bestial-failure.png',
                 description: game.i18n.format('WOD5E.VTM.ResistingFrenzySuccessDescription', {
                   actor: actor.name
                 })
@@ -97,7 +97,7 @@ export const _onFrenzyRoll = async function (event) {
       flags: {
         wod5e: {
           name: game.i18n.localize('WOD5E.VTM.RidingTheWave'),
-          img: 'systems/wod5e/assets/icons/dice/vampire/bestial-failure.png',
+          img: 'systems/wod5e-mta/assets/icons/dice/vampire/bestial-failure.png',
           description: game.i18n.format('WOD5E.VTM.RidingTheWaveDescription', {
             actor: actor.name
           })

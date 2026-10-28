@@ -38,7 +38,7 @@ export async function _damageWillpower(event, target, actor, willpowerDamage, ro
         flags: {
           wod5e: {
             name: `${prependTitle}${game.i18n.localize('WOD5E.Chat.WillpowerFullTitle')}`,
-            img: 'systems/wod5e/assets/icons/dice/vampire/bestial-failure.png',
+            img: 'systems/wod5e-mta/assets/icons/dice/vampire/bestial-failure.png',
             description: game.i18n.localize('WOD5E.Chat.WillpowerFull')
           }
         }
@@ -68,7 +68,7 @@ export async function _damageWillpower(event, target, actor, willpowerDamage, ro
     flags: {
       wod5e: {
         name: `${prependTitle}${game.i18n.localize('WOD5E.Chat.WillpowerDamage')}`,
-        img: 'systems/wod5e/assets/icons/dice/vampire/bestial-failure.png',
+        img: 'systems/wod5e-mta/assets/icons/dice/vampire/bestial-failure.png',
         description: `${game.i18n.format('WOD5E.Chat.HasReceivedWillpowerDamage', {
           actor: actor.name,
           willpowerDamage

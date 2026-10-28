@@ -14,7 +14,7 @@ export async function _increaseParadox(actor, amount, rollMode) {
       flags: {
         wod5e: {
           name: game.i18n.localize('WOD5E.MTA.ParadoxFull1'),
-          img: 'systems/wod5e/assets/icons/dice/mage/paradox-failure.png',
+          img: 'systems/wod5e-mta/assets/icons/dice/mage/paradox-failure.png',
           description: game.i18n.localize('WOD5E.MTA.ParadoxFull2')
         }
       }

@@ -11,7 +11,7 @@ export class StorytellerMenu extends FormApplication {
       title: game.i18n.localize('WOD5E.Settings.StorytellerMenu'),
       id: 'wod5e-storyteller',
       classes: ['wod5e'],
-      template: 'systems/wod5e/display/ui/storyteller-menu.hbs',
+      template: 'systems/wod5e-mta/display/ui/storyteller-menu.hbs',
       width: 500,
       height: 450,
       resizable: true,
@@ -225,7 +225,7 @@ export class StorytellerMenu extends FormApplication {
       Object.entries(list).filter((item) => !modifiedList.some((mod) => mod.id === item[0]))
     )
 
-    const template = 'systems/wod5e/display/ui/select-dialog.hbs'
+    const template = 'systems/wod5e-mta/display/ui/select-dialog.hbs'
     const content = await foundry.applications.handlebars.renderTemplate(template, {
       options: effectiveList
     })

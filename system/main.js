@@ -107,7 +107,7 @@ Hooks.once('init', async function () {
   CONFIG.Actor.documentClass = WoDActor
   CONFIG.Item.documentClass = WoDItem
   CONFIG.ChatMessage.documentClass = WoDChatMessage
-  CONFIG.ChatMessage.template = 'systems/wod5e/display/ui/chat/chat-message-default.hbs'
+  CONFIG.ChatMessage.template = 'systems/wod5e-mta/display/ui/chat/chat-message-default.hbs'
   // Custom UI implementations
   CONFIG.ui.chat = WoDChatLog
   CONFIG.ui.settings = WoDSettings

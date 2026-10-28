@@ -103,28 +103,28 @@ export class GroupActorSheet extends HandlebarsApplicationMixin(
 
   static PARTS = {
     header: {
-      template: 'systems/wod5e/display/shared/actors/group-sheet.hbs'
+      template: 'systems/wod5e-mta/display/shared/actors/group-sheet.hbs'
     },
     tabs: {
-      template: 'systems/wod5e/display/shared/actors/parts/tab-navigation.hbs'
+      template: 'systems/wod5e-mta/display/shared/actors/parts/tab-navigation.hbs'
     },
     members: {
-      template: 'systems/wod5e/display/shared/actors/parts/group/group-members.hbs'
+      template: 'systems/wod5e-mta/display/shared/actors/parts/group/group-members.hbs'
     },
     features: {
-      template: 'systems/wod5e/display/shared/actors/parts/group/features.hbs'
+      template: 'systems/wod5e-mta/display/shared/actors/parts/group/features.hbs'
     },
     equipment: {
-      template: 'systems/wod5e/display/shared/actors/parts/equipment.hbs'
+      template: 'systems/wod5e-mta/display/shared/actors/parts/equipment.hbs'
     },
     notepad: {
-      template: 'systems/wod5e/display/shared/actors/parts/notepad.hbs'
+      template: 'systems/wod5e-mta/display/shared/actors/parts/notepad.hbs'
     },
     settings: {
-      template: 'systems/wod5e/display/shared/actors/parts/actor-settings.hbs'
+      template: 'systems/wod5e-mta/display/shared/actors/parts/actor-settings.hbs'
     },
     banner: {
-      template: 'systems/wod5e/display/shared/actors/parts/type-banner.hbs'
+      template: 'systems/wod5e-mta/display/shared/actors/parts/type-banner.hbs'
     }
   }
 

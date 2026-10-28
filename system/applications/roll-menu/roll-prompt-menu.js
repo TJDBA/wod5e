@@ -60,11 +60,11 @@ export class RollMenuApplication extends HandlebarsApplicationMixin(ApplicationV
 
   static PARTS = {
     sidebar: {
-      template: 'systems/wod5e/display/ui/roll-menu/sidebar.hbs',
+      template: 'systems/wod5e-mta/display/ui/roll-menu/sidebar.hbs',
       scrollable: ['.saved-rolls-list']
     },
     body: {
-      template: 'systems/wod5e/display/ui/roll-menu/body.hbs'
+      template: 'systems/wod5e-mta/display/ui/roll-menu/body.hbs'
     }
   }
 

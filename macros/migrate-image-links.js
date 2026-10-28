@@ -1,6 +1,6 @@
 export const MigrateImageLinks = async function () {
   const oldPath = 'systems/vtm5e/'
-  const newPath = 'systems/wod5e/'
+  const newPath = 'systems/wod5e-mta/'
   // Escape the oldPath for the regex
   const escapedOldPath = oldPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   // Create a case-insensitive regex to use in replacement functions

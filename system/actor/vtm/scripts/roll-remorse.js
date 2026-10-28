@@ -47,7 +47,7 @@ export const _onRemorseRoll = async function (event) {
           flags: {
             wod5e: {
               name: game.i18n.localize('WOD5E.VTM.RemorseFailed'),
-              img: 'systems/wod5e/assets/icons/dice/vampire/bestial-failure.png',
+              img: 'systems/wod5e-mta/assets/icons/dice/vampire/bestial-failure.png',
               description: game.i18n.format('WOD5E.VTM.RemorseFailedDescription', {
                 actor: actor.name
               })

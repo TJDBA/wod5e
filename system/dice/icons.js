@@ -1,10 +1,10 @@
 import { DiceRegistry } from '../api/def/dice.js'
 
-export const mortalDiceLocation = 'systems/wod5e/assets/icons/dice/mortal/'
-export const vampireDiceLocation = 'systems/wod5e/assets/icons/dice/vampire/'
-export const werewolfDiceLocation = 'systems/wod5e/assets/icons/dice/werewolf/'
-export const hunterDiceLocation = 'systems/wod5e/assets/icons/dice/hunter/'
-export const mageDiceLocation = 'systems/wod5e/assets/icons/dice/mage/'
+export const mortalDiceLocation = 'systems/wod5e-mta/assets/icons/dice/mortal/'
+export const vampireDiceLocation = 'systems/wod5e-mta/assets/icons/dice/vampire/'
+export const werewolfDiceLocation = 'systems/wod5e-mta/assets/icons/dice/werewolf/'
+export const hunterDiceLocation = 'systems/wod5e-mta/assets/icons/dice/hunter/'
+export const mageDiceLocation = 'systems/wod5e-mta/assets/icons/dice/mage/'
 
 // Baseline dice variables and icon filenames
 export const normalDiceFaces = {

@@ -330,7 +330,7 @@ class WOD5eDice {
       const situationalModifiers = actor ? await getSituationalModifiers({ actor, selectors }) : {}
 
       // Roll dialog template
-      const dialogTemplate = `systems/wod5e/display/ui/${system}-roll-dialog.hbs`
+      const dialogTemplate = `systems/wod5e-mta/display/ui/${system}-roll-dialog.hbs`
       // Data that the dialog template needs
       const dialogData = {
         system,

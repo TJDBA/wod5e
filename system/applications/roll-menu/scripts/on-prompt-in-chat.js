@@ -69,7 +69,7 @@ export const _onPromptInChat = async function (event) {
     }`,
     flags: {
       wod5e: {
-        template: 'systems/wod5e/display/ui/chat/chat-message-roll-prompt.hbs',
+        template: 'systems/wod5e-mta/display/ui/chat/chat-message-roll-prompt.hbs',
         valuePaths: valuePathsArray.join(' '),
         isRollPrompt: true,
         promptedRolls,
