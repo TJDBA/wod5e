@@ -230,6 +230,7 @@ export const _setupSquareCounters = async function (html) {
       const despair = data.name === 'system.despair'
       const desperation = data.name === 'system.desperation'
       const danger = data.name === 'system.danger'
+      const hubris = data.name === 'system.hubris'
 
       const fulls = parseInt(data[states['-']]) || 0
       const halfs = parseInt(data[states['/']]) || 0
@@ -245,7 +246,7 @@ export const _setupSquareCounters = async function (html) {
         values = new Array(fulls)
 
         values.fill('-', 0, fulls)
-      } else if (humanity || desperation || danger) {
+      } else if (humanity || desperation || danger || hubris) {
         // Vampire-specific
         values = new Array(fulls + halfs)
 
@@ -383,17 +384,26 @@ function updateStateCounters(oldState, newState, data, states, index) {
   const despair = data.name === 'system.despair'
   const desperation = data.name === 'system.desperation'
   const danger = data.name === 'system.danger'
+  const hubris = data.name === 'system.hubris'
 
   const fulls = parseInt(data[states['-']]) || 0
   const halfs = parseInt(data[states['/']]) || 0
   const crossed = parseInt(data[states.x]) || 0
 
-  if ((oldState !== '' && oldState !== '-') || humanity || desperation || danger) {
+  if ((oldState !== '' && oldState !== '-') || humanity || desperation || danger || hubris) {
     data[states[oldState]] = (parseInt(data[states[oldState]]) || 0) - 1
   }
 
   // Adjust maximum count if the step was removed
-  if (oldState !== '' && newState === '' && !humanity && !despair && !desperation && !danger) {
+  if (
+    oldState !== '' &&
+    newState === '' &&
+    !humanity &&
+    !despair &&
+    !desperation &&
+    !danger &&
+    !hubris
+  ) {
     data[states['-']] = (parseInt(data[states['-']]) || 0) - 1
   }
 

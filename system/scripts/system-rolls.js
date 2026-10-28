@@ -3,6 +3,7 @@ import { generateRollFormula } from './rolls/roll-formula.js'
 import { getSituationalModifiers } from './rolls/situational-modifiers.js'
 import { _damageWillpower } from './rolls/willpower-damage.js'
 import { _increaseHunger } from './rolls/increase-hunger.js'
+import { _increaseParadox } from './rolls/increase-paradox.js'
 import { _decreaseRage } from './rolls/decrease-rage.js'
 import { _applyOblivionStains } from './rolls/apply-oblivion-stains.js'
 import { updateRollPrompt } from '../sockets/roll-prompt.js'
@@ -592,6 +593,12 @@ class WOD5eDice {
           game.settings.get('wod5e', 'automatedRage')
         ) {
           _decreaseRage(actor, failures, rollMode)
+        } else if (
+          system === 'mage' &&
+          increaseHunger &&
+          game.settings.get('wod5e', 'automatedParadox')
+        ) {
+          _increaseParadox(actor, failures, rollMode)
         }
       }
 

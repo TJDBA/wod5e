@@ -651,4 +651,104 @@ export const loadDiceSoNice = async function (dice3d) {
     },
     'd10'
   )
+
+  // ---- Mage (Ascension) Dice So Nice presets ----
+  dice3d.addColorset(
+    {
+      name: 'mage',
+      description: 'Mage Dice',
+      category: 'V5',
+      foreground: '#ffffff',
+      background: '#4A154B',
+      texture: 'none',
+      edge: '#2D0031',
+      material: 'plastic',
+      font: 'Arial Black'
+    },
+    'default'
+  )
+
+  dice3d.addColorset(
+    {
+      name: 'paradox',
+      description: 'Paradox Dice',
+      category: 'V5',
+      foreground: '#ffffff',
+      background: '#9A0054',
+      texture: 'none',
+      edge: '#D8005A',
+      material: 'plastic',
+      font: 'Arial Black'
+    },
+    'default'
+  )
+
+  // Register the Mage basic (da) and Paradox (dp) dice across every wod5e DSN system
+  for (const dsnSystem of ['wod5e', 'vtm5x', 'vtm5y']) {
+    dice3d.addDicePreset(
+      {
+        type: 'da',
+        labels: [
+          'systems/wod5e/assets/icons/dsn/normal-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/normal-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/normal-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/normal-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/normal-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/mage-success-dsn.png',
+          'systems/wod5e/assets/icons/dsn/mage-success-dsn.png',
+          'systems/wod5e/assets/icons/dsn/mage-success-dsn.png',
+          'systems/wod5e/assets/icons/dsn/mage-success-dsn.png',
+          'systems/wod5e/assets/icons/dsn/mage-crit-dsn.png'
+        ],
+        bumpMaps: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          'systems/wod5e/assets/icons/dsn/mage-success-dsn-bump.png',
+          'systems/wod5e/assets/icons/dsn/mage-success-dsn-bump.png',
+          'systems/wod5e/assets/icons/dsn/mage-success-dsn-bump.png',
+          'systems/wod5e/assets/icons/dsn/mage-success-dsn-bump.png',
+          'systems/wod5e/assets/icons/dsn/mage-crit-dsn-bump.png'
+        ],
+        colorset: dsnSystem === 'wod5e' ? 'mage' : undefined,
+        system: dsnSystem
+      },
+      'd10'
+    )
+
+    dice3d.addDicePreset(
+      {
+        type: 'dp',
+        labels: [
+          'systems/wod5e/assets/icons/dsn/paradox-backlash-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-fail-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-success-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-success-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-success-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-success-dsn.png',
+          'systems/wod5e/assets/icons/dsn/paradox-crit-dsn.png'
+        ],
+        bumpMaps: [
+          'systems/wod5e/assets/icons/dsn/paradox-backlash-dsn-bump.png',
+          '',
+          '',
+          '',
+          '',
+          'systems/wod5e/assets/icons/dsn/paradox-success-dsn-bump.png',
+          'systems/wod5e/assets/icons/dsn/paradox-success-dsn-bump.png',
+          'systems/wod5e/assets/icons/dsn/paradox-success-dsn-bump.png',
+          'systems/wod5e/assets/icons/dsn/paradox-success-dsn-bump.png',
+          'systems/wod5e/assets/icons/dsn/paradox-crit-dsn-bump.png'
+        ],
+        colorset: dsnSystem === 'wod5e' ? 'paradox' : undefined,
+        system: dsnSystem
+      },
+      'd10'
+    )
+  }
 }

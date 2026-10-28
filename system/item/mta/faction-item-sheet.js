@@ -1,0 +1,115 @@
+// Preparation functions
+import {
+  prepareDescriptionContext,
+  prepareModifiersContext,
+  prepareItemSettingsContext
+} from '../scripts/prepare-partials.js'
+import { prepareFocusContext } from './scripts/prepare-partials.js'
+// Base item sheet to extend from
+import { WoDItemBase } from '../wod-item-base.js'
+import { _onRemoveItem } from '../scripts/on-remove-item.js'
+// Mixin
+const { HandlebarsApplicationMixin } = foundry.applications.api
+
+/**
+ * Extend the WoDItemBase document
+ * @extends {WoDItemBase}
+ */
+export class FactionItemSheet extends HandlebarsApplicationMixin(WoDItemBase) {
+  static DEFAULT_OPTIONS = {
+    classes: ['wod5e', 'item', 'sheet'],
+    actions: {
+      removeItem: _onRemoveItem
+    }
+  }
+
+  _getHeaderControls() {
+    const controls = super._getHeaderControls()
+    const item = this.item
+
+    if (item?.isOwned) {
+      controls.push({
+        icon: 'fas fa-trash',
+        label: game.i18n.format('WOD5E.RemoveString', {
+          string: game.i18n.localize('TYPES.Item.faction')
+        }),
+        action: 'removeItem'
+      })
+    }
+
+    return controls
+  }
+
+  static PARTS = {
+    header: {
+      template: 'systems/wod5e/display/mta/items/faction-sheet.hbs'
+    },
+    tabs: {
+      template: 'templates/generic/tab-navigation.hbs'
+    },
+    description: {
+      template: 'systems/wod5e/display/shared/items/parts/description.hbs'
+    },
+    focus: {
+      template: 'systems/wod5e/display/mta/items/parts/focus.hbs'
+    },
+    modifiers: {
+      template: 'systems/wod5e/display/shared/items/parts/modifiers.hbs'
+    },
+    settings: {
+      template: 'systems/wod5e/display/shared/items/parts/item-settings.hbs'
+    }
+  }
+
+  tabs = {
+    description: {
+      id: 'description',
+      group: 'primary',
+      label: 'WOD5E.Tabs.Description'
+    },
+    focus: {
+      id: 'focus',
+      group: 'primary',
+      label: 'WOD5E.MTA.Focus'
+    },
+    modifiers: {
+      id: 'modifiers',
+      group: 'primary',
+      label: 'WOD5E.ItemsList.Modifiers'
+    },
+    settings: {
+      id: 'settings',
+      group: 'primary',
+      label: 'WOD5E.ItemsList.ItemSettings'
+    }
+  }
+
+  async _prepareContext() {
+    // Top-level variables
+    const data = await super._prepareContext()
+
+    return data
+  }
+
+  async _preparePartContext(partId, context, options) {
+    // Inherit any preparation from the extended class
+    context = { ...(await super._preparePartContext(partId, context, options)) }
+
+    // Top-level variables
+    const item = this.item
+
+    // Prepare each page context
+    switch (partId) {
+      case 'description':
+        return prepareDescriptionContext(context, item)
+      case 'focus':
+        return prepareFocusContext(context, item)
+      case 'modifiers':
+        return prepareModifiersContext(context, item)
+      case 'settings':
+        return prepareItemSettingsContext(context, item)
+    }
+
+    return context
+  }
+}

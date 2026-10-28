@@ -1,0 +1,107 @@
+<section class="tab {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+    <div class="flexrow">
+        <!-- Arete / Avatar ratings -->
+        <div class="avatar-ratings flexcol">
+            <div class="flex-group-center nogrow">
+                <div class="flexcol resource">
+                    <label class="resource-label field-header">{{localize "WOD5E.MTA.Arete"}}</label>
+                    <div class="resource-content flexrow flex-center flex-between">
+                        <div class="resource-value" data-value="{{arete.value}}" data-name="system.arete.value">
+                            <span class="resource-value-empty" data-action="dotCounterEmpty"></span>
+                            {{#numLoop 10}}
+                            <span class="resource-value-step" data-action="dotCounterChange" data-index="{{this}}"></span>
+                            {{/numLoop}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-group-center nogrow">
+                <div class="flexcol resource">
+                    <label class="resource-label field-header">{{localize "WOD5E.MTA.Avatar"}}</label>
+                    <div class="resource-content flexrow flex-center flex-between">
+                        <div class="resource-value" data-value="{{avatar.value}}" data-name="system.avatar.value">
+                            <span class="resource-value-empty" data-action="dotCounterEmpty"></span>
+                            {{#numLoop 10}}
+                            <span class="resource-value-step" data-action="dotCounterChange" data-index="{{this}}"></span>
+                            {{/numLoop}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-group-center nogrow">
+                <div class="flexcol resource">
+                    <label class="resource-label field-header">{{localize "WOD5E.MTA.Quintessence"}}</label>
+                    <div class="flexrow">
+                        <input class="resource" type="number" min="0" name="system.quintessence.value" value="{{quintessence.value}}"/>
+                        <span class="flex-center">/</span>
+                        <input class="resource" type="number" min="0" name="system.quintessence.max" value="{{quintessence.max}}"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-group-center nogrow">
+                <div class="flexcol resource">
+                    <div class="system-rollable paradox-roll" data-action="roll" name="paradox" data-disable-basic-dice="true"
+                        data-use-absolute-value="true" data-absolute-value="1" data-label="{{localize 'WOD5E.MTA.ParadoxCheck'}}"
+                        data-increase-hunger="true" data-difficulty="1" title="{{localize 'WOD5E.MTA.RollParadox'}}">
+                        <label class="resource-label field-header">{{localize "WOD5E.MTA.Paradox"}}</label>
+                        <i class="fa-solid fa-atom"></i>
+                    </div>
+                    {{> "systems/wod5e/display/mta/actors/parts/paradox.hbs"}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Hubris / Quiet + identity -->
+        <div class="avatar-details flexcol">
+            <div class="flex-group-center nogrow">
+                <div class="flexcol resource">
+                    <div class="system-rollable hubris-roll" data-action="hubrisRoll" title="{{localize 'WOD5E.MTA.RollHubris'}}">
+                        <div class="resource-label field-header">
+                            {{localize "WOD5E.MTA.Hubris"}}
+                        </div>
+                        <i class="fa-solid fa-dice-d10"></i>
+                    </div>
+                    {{> "systems/wod5e/display/mta/actors/parts/hubris.hbs"}}
+                </div>
+            </div>
+
+            <div class="flexrow nowrap flex-group-center nogrow">
+                <div class="flexcol">
+                    <label class="resource-label field-header">{{localize 'WOD5E.MTA.Essence'}}</label>
+                    <input class="resource" type="text" name="system.essence" value="{{essence}}" placeholder="{{localize 'WOD5E.MTA.Essence'}}"/>
+                </div>
+                <div class="flexcol">
+                    <label class="resource-label field-header">{{localize 'WOD5E.MTA.Affiliation'}}</label>
+                    <input class="resource" type="text" name="system.headers.affiliation" value="{{affiliation}}" placeholder="{{localize 'WOD5E.MTA.Affiliation'}}"/>
+                </div>
+            </div>
+
+            <div class="flexrow nowrap flex-group-center nogrow">
+                <div class="flexcol">
+                    <label class="resource-label field-header">{{localize 'WOD5E.MTA.Sect'}}</label>
+                    <input class="resource" type="text" name="system.headers.sect" value="{{sect}}" placeholder="{{localize 'WOD5E.MTA.Sect'}}"/>
+                </div>
+                <div class="flexcol">
+                    <label class="resource-label field-header">{{localize 'WOD5E.MTA.Faction'}}</label>
+                    <div class="resource resource-content">
+                        {{> "systems/wod5e/display/shared/actors/partials/dynamic-item-display.hbs" item=faction type="faction"}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="flexrow nowrap flex-group-center nogrow">
+                <div class="flexcol">
+                    <label class="resource-label field-header">{{localize 'WOD5E.MTA.Paradigm'}}</label>
+                    <input class="resource" type="text" name="system.headers.paradigm" value="{{paradigm}}" placeholder="{{localize 'WOD5E.MTA.Paradigm'}}"/>
+                </div>
+                <div class="flexcol">
+                    <label class="resource-label field-header">{{localize 'WOD5E.MTA.Practice'}}</label>
+                    <input class="resource" type="text" name="system.headers.practice" value="{{practice}}" placeholder="{{localize 'WOD5E.MTA.Practice'}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,148 @@
+<section class="tab {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+    <div class="flexrow">
+        <div class="item-list">
+            <div class="flexrow flex-center">
+                <div class="item-header">{{localize 'WOD5E.MTA.Spheres'}}</div>
+                <div class="item-controls">
+                    <a class="item-control search-data-item flex-center" data-action="searchItem" title="{{localize 'WOD5E.Search'}}" data-type="rote">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                    <a class="item-control add-sphere flex-center" title="{{localize 'WOD5E.MTA.AddSphere'}}" data-action="addSphere">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="powers-display-tree category">
+                {{#each spheres as |sphere key|}}
+                    {{#if sphere.visible}}
+                        <span class="parent flexrow">
+                            <div class="icon category-select{{#if sphere.selected}} selected{{/if}}" data-action="selectSphere" data-sphere="{{key}}"></div>
+                            <a class="select-label" data-action="selectSphere" data-sphere="{{key}}">{{sphere.displayName}}</a>
+                            <div class="item-controls">
+                                <!-- Icon to roll the sphere with an attribute and/or skill combination -->
+                                <a class="rollable sphere-dice" data-action="roll" title="{{localize 'WOD5E.RollList.Label'}}" data-value-paths="spheres.{{key}}.value"
+                                    data-sphere="{{key}}" data-select-dialog="true">
+                                    <i class="fa-solid fa-dice-d10"></i>
+                                </a>
+                                <!-- Icon to show the sphere description to the chat-->
+                                <a class="item-control sphere-chat" data-action="sphereChat" title="{{localize 'WOD5E.ItemsList.ShowToChat'}}" data-sphere="{{key}}">
+                                    <i class="fas fa-comment-alt"></i>
+                                </a>
+                                <!-- Icon to delete the sphere (as long as it doesn't have any rotes) -->
+                                {{#if (eq sphere.rotes.length 0)}}
+                                    <a class="item-control sphere-delete" data-action="removeSphere" title="{{localize 'WOD5E.Delete'}}" data-sphere="{{key}}">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                {{/if}}
+                            </div>
+                            <!-- Sphere dots -->
+                            <div class="power-resource-dots">
+                                <div class="resource-value" data-value="{{sphere.value}}" data-name="system.spheres.{{key}}.value">
+                                    <span class="resource-value-empty" data-action="dotCounterEmpty"></span>
+                                    {{#numLoop 5}}
+                                        <span class="resource-value-step" data-action="dotCounterChange" data-index="{{this}}"></span>
+                                    {{/numLoop}}
+                                </div>
+                            </div>
+                        </span>
+                        <ul>
+                            {{#each sphere.rotes as |rote key|}}
+                                <li>
+                                    <span>
+                                        <div class="icon power-select{{#if rote.system.selected}} selected{{/if}}" data-action="selectSphereRote" data-rote="{{rote.id}}" style="background-image: url('{{rote.img}}');"></div>
+                                        <a class="select-label" data-action="selectSphereRote" data-rote="{{rote.id}}">{{rote.name}}</a>
+                                    </span>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="powers-list item-list">
+            {{#if selectedSphere}}
+                <div class="sphere category collapsible-container">
+                    <div class="flex-center item-header collapsible" data-action="toggleCollapse">
+                        <div class="item-name">
+                            {{selectedSphere.displayName}}
+                            <a class="item-control item-create" data-action="createItem" title="{{localize 'WOD5E.MTA.AddRote'}}" data-type="rote" data-subtype="{{selectedSphere.id}}">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sphere-description collapsible-content">
+                        <prose-mirror name="system.spheres.{{selectedSphere.id}}.description" value="{{selectedSphere.description}}"
+                            toggled="true" compact="true">
+                            {{{enrichedSelectedSphereDescription}}}
+                        </prose-mirror>
+                    </div>
+                </div>
+            {{else}}
+                <div class="sphere category flex-center">
+                    {{localize 'WOD5E.MTA.NoSphereSelected'}}
+                </div>
+            {{/if}}
+
+            {{#if selectedSphereRote}}
+                <div class="sphere category">
+                    <div class="flex-center">
+                        <div class="flexrow">
+                            <span class="item-name item-header">
+                                {{#if (isNotEmpty selectedSphereRote.system.dicepool)}}
+                                    <a class="item-image rollable-item" data-action="rollItem" data-item-uuid="{{selectedSphereRote.uuid}}">
+                                        <i class="fa-solid fa-dice-d10"></i>
+                                    </a>
+                                {{/if}}
+                                {{selectedSphereRote.name}}
+                            </span>
+                            <div class="item-controls flex-group-right">
+                                <a class="item-control item-edit" data-action="itemOpen" title="{{localize 'WOD5E.Edit'}}" data-item-id="{{selectedSphereRote._id}}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="item-control item-chat" data-action="itemChat" title="{{localize 'WOD5E.ItemsList.ShowToChat'}}" data-item-id="{{selectedSphereRote._id}}">
+                                    <i class="fas fa-comment-alt"></i>
+                                </a>
+                                <a class="item-control item-delete" data-action="itemDelete" title="{{localize 'WOD5E.Delete'}}" data-item-id="{{selectedSphereRote._id}}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sphere-description">
+                        <div class="flex-center flexrow">
+                            <div class="flex-center">
+                                <div>
+                                    <b>{{localize "WOD5E.Level"}}: {{selectedSphereRote.system.level}}</b>
+                                </div>
+                            </div>
+                            {{#ifgr selectedSphereRote.system.cost 0}}
+                                <div class="flex-center">
+                                    <div>
+                                        <b>
+                                            {{localize 'WOD5E.ItemsList.Cost'}}:
+                                            {{selectedSphereRote.system.cost}} {{localize 'WOD5E.MTA.ParadoxChecks'}}
+                                            <a class="item-image rollable-item" data-action="roll" data-disable-basic-dice="true" data-use-absolute-value="true" data-selectors="paradox"
+                                                data-absolute-value="{{selectedSphereRote.system.cost}}" data-label="{{localize 'WOD5E.MTA.ParadoxCheck'}} - {{selectedSphereRote.name}}" data-increase-hunger="true"
+                                                title="{{localize 'WOD5E.MTA.RollParadox'}}" data-item-id="{{selectedSphereRote.id}}">
+                                                <i class="fa-solid fa-dice-d10"></i>
+                                            </a>
+                                        </b>
+                                    </div>
+                                </div>
+                            {{/ifgr}}
+                        </div>
+                        {{#if selectedSphereRoteDescription}}
+                            <div class="power-description">
+                                {{{selectedSphereRoteDescription}}}
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            {{else}}
+                <div class="sphere category flex-center">
+                    {{localize 'WOD5E.MTA.NoRoteSelected'}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</section>

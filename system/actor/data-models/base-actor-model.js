@@ -1,5 +1,6 @@
 import { attributeFields } from './fields/attribute-fields.js'
 import { hunterFields } from './fields/hunter-fields.js'
+import { mageFields } from './fields/mage-fields.js'
 import { settingFields } from './fields/setting-fields.js'
 import { skillFields } from './fields/skill-fields.js'
 import { vampireFields } from './fields/vampire-fields.js'
@@ -49,7 +50,14 @@ export class WoDActorModel extends foundry.abstract.TypeDataModel {
       creedfields: new fields.StringField({ initial: '' }),
 
       // Hunter
-      cellname: new fields.StringField({ initial: '' })
+      cellname: new fields.StringField({ initial: '' }),
+
+      // Mage
+      affiliation: new fields.StringField({ initial: '' }),
+      sect: new fields.StringField({ initial: '' }),
+      paradigm: new fields.StringField({ initial: '' }),
+      practice: new fields.StringField({ initial: '' }),
+      awakening: new fields.StringField({ initial: '' })
     })
 
     // XP fields
@@ -103,6 +111,7 @@ export class WoDActorModel extends foundry.abstract.TypeDataModel {
     Object.assign(schema, vampireFields())
     Object.assign(schema, werewolfFields())
     Object.assign(schema, hunterFields())
+    Object.assign(schema, mageFields())
 
     return schema
   }

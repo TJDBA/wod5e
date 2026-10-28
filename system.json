@@ -1,8 +1,8 @@
 {
   "id": "wod5e",
-  "title": "World of Darkness 5e",
-  "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "5.3.28",
+  "title": "World of Darkness 5e (+ Mage the Ascension)",
+  "description": "World of Darkness 5e system for Foundry VTT, with added Mage: The Ascension 5th Edition (M5) support.",
+  "version": "5.3.28-mta.1",
   "compatibility": {
     "minimum": "14",
     "verified": "14.368",
@@ -13,6 +13,10 @@
       "name": "Veilza",
       "url": "https://github.com/Veilza",
       "discord": "veilza"
+    },
+    {
+      "name": "TJDBA",
+      "url": "https://github.com/TJDBA"
     }
   ],
   "esmodules": [
@@ -32,13 +36,13 @@
   },
   "initiative": "1d10",
   "socket": true,
-  "changelog": "https://github.com/WoD5E-Developers/wod5e/releases/tag/5.3.28",
+  "changelog": "https://github.com/TJDBA/wod5e/releases",
   "license": "./LICENSE.md",
-  "url": "https://github.com/WoD5E-Developers/wod5e",
-  "bugs": "https://github.com/WoD5E-Developers/wod5e/issues",
+  "url": "https://github.com/TJDBA/wod5e",
+  "bugs": "https://github.com/TJDBA/wod5e/issues",
   "background": "systems/wod5e/assets/images/wodcity.jpg",
-  "manifest": "https://github.com/WoD5E-Developers/wod5e/releases/download/5.3.28/system.json",
-  "download": "https://github.com/WoD5E-Developers/wod5e/releases/download/5.3.28/wod5e.zip",
+  "manifest": "https://raw.githubusercontent.com/TJDBA/wod5e/main/system.json",
+  "download": "https://github.com/TJDBA/wod5e/archive/refs/heads/main.zip",
   "documentTypes": {
     "Actor": {
       "mortal": {},
@@ -47,6 +51,7 @@
       "ghoul": {},
       "hunter": {},
       "werewolf": {},
+      "mage": {},
       "group": {}
     },
     "Item": {
@@ -70,7 +75,9 @@
       "auspice": {},
       "talisman": {},
       "gift": {},
-      "guidingspirit": {}
+      "guidingspirit": {},
+      "faction": {},
+      "rote": {}
     }
   },
   "flags": {
@@ -143,6 +150,11 @@
       "path": "lang/en/hunter-en.json"
     },
     {
+      "lang": "en",
+      "name": "Mage (English)",
+      "path": "lang/en/mage-en.json"
+    },
+    {
       "lang": "fr",
       "name": "Core (French)",
       "path": "lang/fr/core-fr.json"
@@ -161,6 +173,11 @@
       "lang": "fr",
       "name": "Hunter (French)",
       "path": "lang/fr/hunter-fr.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Mage (French)",
+      "path": "lang/fr/mage-fr.json"
     },
     {
       "lang": "pt-BR",
@@ -183,6 +200,11 @@
       "path": "lang/pt-BR/hunter-pt-BR.json"
     },
     {
+      "lang": "pt-BR",
+      "name": "Mage (Brazilian Portuguese)",
+      "path": "lang/pt-BR/mage-pt-BR.json"
+    },
+    {
       "lang": "es",
       "name": "Core (Spanish)",
       "path": "lang/es/core-es.json"
@@ -201,6 +223,11 @@
       "lang": "es",
       "name": "Hunter (Spanish)",
       "path": "lang/es/hunter-es.json"
+    },
+    {
+      "lang": "es",
+      "name": "Mage (Spanish)",
+      "path": "lang/es/mage-es.json"
     },
     {
       "lang": "de",
@@ -223,6 +250,11 @@
       "path": "lang/de/hunter-de.json"
     },
     {
+      "lang": "de",
+      "name": "Mage (German)",
+      "path": "lang/de/mage-de.json"
+    },
+    {
       "lang": "it",
       "name": "Core (Italian)",
       "path": "lang/it/core-it.json"
@@ -241,6 +273,11 @@
       "lang": "it",
       "name": "Hunter (Italian)",
       "path": "lang/it/hunter-it.json"
+    },
+    {
+      "lang": "it",
+      "name": "Mage (Italian)",
+      "path": "lang/it/mage-it.json"
     },
     {
       "lang": "pl",
@@ -263,6 +300,11 @@
       "path": "lang/pl/hunter-pl.json"
     },
     {
+      "lang": "pl",
+      "name": "Mage (Polish)",
+      "path": "lang/pl/mage-pl.json"
+    },
+    {
       "lang": "ru",
       "name": "Core (Russian)",
       "path": "lang/ru/core-ru.json"
@@ -281,6 +323,11 @@
       "lang": "ru",
       "name": "Hunter (Russian)",
       "path": "lang/ru/hunter-ru.json"
+    },
+    {
+      "lang": "ru",
+      "name": "Mage (Russian)",
+      "path": "lang/ru/mage-ru.json"
     },
     {
       "lang": "uk",
@@ -303,6 +350,11 @@
       "path": "lang/uk/hunter-uk.json"
     },
     {
+      "lang": "uk",
+      "name": "Mage (Ukrainian)",
+      "path": "lang/uk/mage-uk.json"
+    },
+    {
       "lang": "ja",
       "name": "Core (Japanese)",
       "path": "lang/ja/core-ja.json"
@@ -321,6 +373,11 @@
       "lang": "ja",
       "name": "Hunter (Japanese)",
       "path": "lang/ja/hunter-ja.json"
+    },
+    {
+      "lang": "ja",
+      "name": "Mage (Japanese)",
+      "path": "lang/ja/mage-ja.json"
     }
   ]
 }

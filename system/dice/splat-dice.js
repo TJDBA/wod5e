@@ -4,10 +4,12 @@ import {
   vampireDiceLocation,
   werewolfDiceLocation,
   hunterDiceLocation,
+  mageDiceLocation,
   normalDiceFaces,
   hungerDiceFaces,
   rageDiceFaces,
-  desperationDiceFaces
+  desperationDiceFaces,
+  paradoxDiceFaces
 } from './icons.js'
 
 export class WOD5eDie extends foundry.dice.terms.Die {
@@ -235,6 +237,64 @@ export class WerewolfRageDie extends WOD5eDie {
       8: `<img src="${werewolfDiceLocation + rageDiceFaces.success}" />`,
       9: `<img src="${werewolfDiceLocation + rageDiceFaces.success}" />`,
       10: `<img src="${werewolfDiceLocation + rageDiceFaces.critical}" />`
+    }[result]
+  }
+}
+
+/**
+ * Extend the basic Die for the Mage (a) dice
+ * @extends {Die}
+ */
+export class MageDie extends WOD5eDie {
+  static GAME_SYSTEM = 'mage'
+
+  static DIE_TYPE = 'basic'
+
+  /** @override */
+  static DENOMINATION = 'a'
+
+  /** @override */
+  static getResultLabel(result) {
+    return {
+      1: `<img src="${mageDiceLocation + normalDiceFaces.failure}" />`,
+      2: `<img src="${mageDiceLocation + normalDiceFaces.failure}" />`,
+      3: `<img src="${mageDiceLocation + normalDiceFaces.failure}" />`,
+      4: `<img src="${mageDiceLocation + normalDiceFaces.failure}" />`,
+      5: `<img src="${mageDiceLocation + normalDiceFaces.failure}" />`,
+      6: `<img src="${mageDiceLocation + normalDiceFaces.success}" />`,
+      7: `<img src="${mageDiceLocation + normalDiceFaces.success}" />`,
+      8: `<img src="${mageDiceLocation + normalDiceFaces.success}" />`,
+      9: `<img src="${mageDiceLocation + normalDiceFaces.success}" />`,
+      10: `<img src="${mageDiceLocation + normalDiceFaces.critical}" />`
+    }[result]
+  }
+}
+
+/**
+ * Extend the basic Die for the Paradox (p) dice
+ * @extends {Die}
+ */
+export class MageParadoxDie extends WOD5eDie {
+  static GAME_SYSTEM = 'mage'
+
+  static DIE_TYPE = 'advanced'
+
+  /** @override */
+  static DENOMINATION = 'p'
+
+  /** @override */
+  static getResultLabel(result) {
+    return {
+      1: `<img src="${mageDiceLocation + paradoxDiceFaces.backlash}" />`,
+      2: `<img src="${mageDiceLocation + paradoxDiceFaces.failure}" />`,
+      3: `<img src="${mageDiceLocation + paradoxDiceFaces.failure}" />`,
+      4: `<img src="${mageDiceLocation + paradoxDiceFaces.failure}" />`,
+      5: `<img src="${mageDiceLocation + paradoxDiceFaces.failure}" />`,
+      6: `<img src="${mageDiceLocation + paradoxDiceFaces.success}" />`,
+      7: `<img src="${mageDiceLocation + paradoxDiceFaces.success}" />`,
+      8: `<img src="${mageDiceLocation + paradoxDiceFaces.success}" />`,
+      9: `<img src="${mageDiceLocation + paradoxDiceFaces.success}" />`,
+      10: `<img src="${mageDiceLocation + paradoxDiceFaces.critical}" />`
     }[result]
   }
 }

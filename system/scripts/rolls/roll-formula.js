@@ -6,7 +6,9 @@ import {
   HunterDie,
   HunterDesperationDie,
   WerewolfDie,
-  WerewolfRageDie
+  WerewolfRageDie,
+  MageDie,
+  MageParadoxDie
 } from '../../dice/splat-dice.js'
 
 /**
@@ -44,6 +46,14 @@ export async function generateRollFormula({
   } else if (system === 'hunter') {
     // Construct the Hunter roll formula by merging Hunter Dice and Desperation Dice
     rollFormula = `${basicDice}d${HunterDie.DENOMINATION}${successFormula} + ${advancedDice}d${HunterDesperationDie.DENOMINATION}${successFormula}`
+  } else if (system === 'mage') {
+    // Construct the Mage roll formula by merging Mage Dice and Paradox Dice.
+    // A mage may reroll Paradox dice (keep-highest) equal to their Arete,
+    // mirroring how a Vampire rouse reroll works.
+    const paradoxReroll = rerollHunger ? `kh${advancedDice}` : ''
+    if (rerollHunger) advancedDice = advancedDice * 2
+
+    rollFormula = `${basicDice}d${MageDie.DENOMINATION}${successFormula} + ${advancedDice}d${MageParadoxDie.DENOMINATION}${successFormula}${paradoxReroll}`
   } else {
     // Construct the Mortal roll formula; it doesn't need any secondary rolls
     rollFormula = `${basicDice}d${MortalDie.DENOMINATION}${successFormula}`

@@ -133,6 +133,63 @@
   font-family: "vampireRevised", "sans-serif";
 }
 
+/*
+ * Mage: The Ascension (M5) styling.
+ * Palette anchored on Ascension Purple, with Ice Blue (Technocracy / tech-gnosis)
+ * and Toxic Magenta (Paradox / Quiet / instability) accents.
+ */
+.wod5e.actor.sheet.mage .window-header,
+.wod5e.actor.sheet.mage .actor-header .field-header,
+.wod5e.actor.sheet.mage .sheet-tabs .item.active {
+  color: #a0e6ff;
+}
+.wod5e.actor.sheet.mage .powers-display-tree .category-select.selected,
+.wod5e.actor.sheet.mage .powers-display-tree .power-select.selected {
+  border-color: #8fe2ff;
+  box-shadow: 0 0 6px rgba(143, 226, 255, 0.6);
+}
+.wod5e.actor.sheet.mage .power-resource-dots .resource-value-step.active {
+  background: #4a154b;
+  border-color: #8fe2ff;
+}
+.wod5e.actor.sheet.mage .avatar-ratings .resource-value-step.active {
+  background: #4a154b;
+  border-color: #d4af37;
+}
+.wod5e.actor.sheet.mage .paradox .resource-value-step.active {
+  background: #9a0054;
+  border-color: #d8005a;
+  box-shadow: 0 0 4px rgba(216, 0, 90, 0.7);
+}
+.wod5e.actor.sheet.mage .paradox-button,
+.wod5e.actor.sheet.mage .paradox-roll i {
+  color: #d8005a;
+}
+.wod5e.actor.sheet.mage .hubris .resource-counter-step[data-state='-'] {
+  background: #2d0031;
+  border-color: #4a154b;
+}
+.wod5e.actor.sheet.mage .hubris .resource-counter-step[data-state='/'] {
+  background: #9a0054;
+  border-color: #d8005a;
+}
+.wod5e.actor.sheet.mage .messy-critical {
+  color: #8fe2ff;
+}
+.wod5e.actor.sheet.mage .bestial-failure {
+  color: #d8005a;
+}
+.wod5e.dialog.mage .window-content {
+  border-top: 3px solid #4a154b;
+}
+.mage-dice img,
+.paradox-dice img {
+  border-radius: 3px;
+}
+.paradox-dice img {
+  box-shadow: 0 0 3px rgba(216, 0, 90, 0.6);
+}
+
 :root {
   --mortal-color-1: #302d5bf0;
   --mortal-color-2: #706ca5f0;

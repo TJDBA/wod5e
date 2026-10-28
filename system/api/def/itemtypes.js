@@ -24,6 +24,9 @@ import { GiftItemSheet } from '../../item/wta/gift-item-sheet.js'
 import { AuspiceItemSheet } from '../../item/wta/auspice-sheet.js'
 import { TalismanItemSheet } from '../../item/wta/talisman-item-sheet.js'
 import { TribeItemSheet } from '../../item/wta/tribe-item-sheet.js'
+// Mage system
+import { RoteItemSheet } from '../../item/mta/rote-item-sheet.js'
+import { FactionItemSheet } from '../../item/mta/faction-item-sheet.js'
 // Data models
 import { FeatureItemModel } from '../../item/data-models/shared/feature-item-model.js'
 import { CustomRollItemModel } from '../../item/data-models/shared/customRoll-item-model.js'
@@ -52,6 +55,9 @@ import { Edges } from './edges.js'
 import { Gifts } from './gifts.js'
 import { GuidingSpiritItemModel } from '../../item/data-models/wta/guiding-spirit-item-model.js'
 import { GuidingSpiritItemSheet } from '../../item/wta/guiding-spirit-sheet.js'
+import { RoteItemModel } from '../../item/data-models/mta/rote-item-model.js'
+import { FactionItemModel } from '../../item/data-models/mta/faction-item-model.js'
+import { Spheres } from './spheres.js'
 
 /*
  *   Each item type is defined through here; this includes the item's label,
@@ -309,6 +315,31 @@ export class ItemTypes extends BaseDefinitionClass {
     limitOnePerActor: true,
     sheetModel: GuidingSpiritItemModel,
     splat: 'werewolf'
+  }
+
+  // Mage Items
+  static faction = {
+    label: 'TYPES.Item.faction',
+    img: '',
+    types: ['faction'],
+    sheetClass: FactionItemSheet,
+    restrictedActorTypes: ['mage'],
+    excludedActorTypes: ['spc'],
+    limitOnePerActor: true,
+    sheetModel: FactionItemModel,
+    splat: 'mage'
+  }
+
+  static rote = {
+    label: 'TYPES.Item.rote',
+    img: 'systems/wod5e/assets/icons/items/discipline.png',
+    types: ['rote'],
+    sheetClass: RoteItemSheet,
+    restrictedActorTypes: ['mage'],
+    sheetModel: RoteItemModel,
+    splat: 'mage',
+    subtypes: Spheres,
+    subtypePath: 'sphere'
   }
 }
 

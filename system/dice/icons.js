@@ -4,6 +4,7 @@ export const mortalDiceLocation = 'systems/wod5e/assets/icons/dice/mortal/'
 export const vampireDiceLocation = 'systems/wod5e/assets/icons/dice/vampire/'
 export const werewolfDiceLocation = 'systems/wod5e/assets/icons/dice/werewolf/'
 export const hunterDiceLocation = 'systems/wod5e/assets/icons/dice/hunter/'
+export const mageDiceLocation = 'systems/wod5e/assets/icons/dice/mage/'
 
 // Baseline dice variables and icon filenames
 export const normalDiceFaces = {
@@ -31,6 +32,13 @@ export const desperationDiceFaces = {
   critical: 'desperation-critical.png',
   criticalFailure: 'desperation-critical-failure.png'
 }
+// Mage Paradox dice: a failure at high Paradox courts backlash
+export const paradoxDiceFaces = {
+  success: 'paradox-success.png',
+  failure: 'paradox-failure.png',
+  critical: 'paradox-critical.png',
+  backlash: 'backlash-failure.png'
+}
 
 /**
  * Basic dice
@@ -57,6 +65,12 @@ DiceRegistry.registerBasic('hunter', {
   imgRoot: hunterDiceLocation,
   faces: normalDiceFaces,
   css: 'hunter-dice'
+})
+
+DiceRegistry.registerBasic('mage', {
+  imgRoot: mageDiceLocation,
+  faces: normalDiceFaces,
+  css: 'mage-dice'
 })
 
 /**
@@ -95,5 +109,17 @@ DiceRegistry.registerAdvanced('hunter', {
     if (num > 5) return 'success'
     if (num > 1) return 'failure'
     return 'criticalFailure'
+  }
+})
+
+DiceRegistry.registerAdvanced('mage', {
+  imgRoot: mageDiceLocation,
+  faces: paradoxDiceFaces,
+  css: 'paradox-dice',
+  resultMap: (num) => {
+    if (num === 10) return 'critical'
+    if (num > 5) return 'success'
+    if (num > 1) return 'failure'
+    return 'backlash'
   }
 })

@@ -1,0 +1,9 @@
+<div class="hubris">
+    <div class="resource-content">
+        <div class="resource-counter editable" data-states="/:quiet,-:value" data-value="{{hubris.value}}" data-quiet="{{hubris.quiet}}" data-name="system.hubris">
+            {{#numLoop 10}}
+            <span class="resource-counter-step" data-action="squareCounterChange" data-index="{{this}}" data-state=""></span>
+            {{/numLoop}}
+        </div>
+    </div>
+</div>

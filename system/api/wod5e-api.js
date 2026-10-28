@@ -355,6 +355,11 @@ export class wod5eAPI {
       const rageDice = Math.max(actorData?.rage?.value, 0)
 
       return rageDice
+    } else if (actor.system.gamesystem === 'mage') {
+      // Define actor's Paradox dice, ensuring it can't go below 0
+      const paradoxDice = Math.max(actorData?.paradox?.value, 0)
+
+      return paradoxDice
     } else {
       // Hunters will handle their Desperation dice in the roll dialog
       // Mortals and ghouls don't need this

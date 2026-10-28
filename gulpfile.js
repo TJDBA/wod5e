@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename)
 // Define languages and files here
 const enDir = path.join(__dirname, 'lang', 'en')
 const languages = ['template', 'de', 'es', 'fr', 'it', 'pl', 'pt-BR', 'ru', 'uk', 'ja'] // Add more languages as needed
-const files = ['core', 'vampire', 'werewolf', 'hunter']
+const files = ['core', 'vampire', 'werewolf', 'hunter', 'mage']
 
 // Sort the English localization keys by the same algorithm as the other language files
 gulp.task('sortEnglishKeys', function (done) {

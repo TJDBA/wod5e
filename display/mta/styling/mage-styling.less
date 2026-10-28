@@ -1,0 +1,97 @@
+/*
+ * Mage: The Ascension (M5) styling.
+ * Palette anchored on Ascension Purple, with Ice Blue (Technocracy / tech-gnosis)
+ * and Toxic Magenta (Paradox / Quiet / instability) accents.
+ */
+
+// --- Palette ---
+@ascension-purple: #4a154b;
+@ascension-purple-dark: #2d0031;
+@ice-blue: #8fe2ff;
+@ice-blue-soft: #a0e6ff;
+@toxic-magenta: #d8005a;
+@toxic-magenta-dark: #9a0054;
+@prime-gold: #d4af37;
+
+.wod5e.actor.sheet.mage {
+  // Header + tab accents use the Ascension purple
+  .window-header,
+  .actor-header .field-header,
+  .sheet-tabs .item.active {
+    color: @ice-blue-soft;
+  }
+
+  // Sphere + rote power tree selection highlight
+  .powers-display-tree {
+    .category-select.selected,
+    .power-select.selected {
+      border-color: @ice-blue;
+      box-shadow: 0 0 6px fade(@ice-blue, 60%);
+    }
+  }
+
+  // Sphere dots
+  .power-resource-dots .resource-value-step.active {
+    background: @ascension-purple;
+    border-color: @ice-blue;
+  }
+
+  // Arete / Avatar rating dots
+  .avatar-ratings .resource-value-step.active {
+    background: @ascension-purple;
+    border-color: @prime-gold;
+  }
+
+  // Paradox track (advanced resource) reads as unstable magenta
+  .paradox {
+    .resource-value-step.active {
+      background: @toxic-magenta-dark;
+      border-color: @toxic-magenta;
+      box-shadow: 0 0 4px fade(@toxic-magenta, 70%);
+    }
+  }
+
+  .paradox-button,
+  .paradox-roll i {
+    color: @toxic-magenta;
+  }
+
+  // Hubris / Quiet degeneration track
+  .hubris {
+    .resource-counter-step {
+      &[data-state='-'] {
+        background: @ascension-purple-dark;
+        border-color: @ascension-purple;
+      }
+      // Quiet (the "stains" equivalent) shows in toxic magenta
+      &[data-state='/'] {
+        background: @toxic-magenta-dark;
+        border-color: @toxic-magenta;
+      }
+    }
+  }
+
+  // Roll result flavours reuse the shared messy/bestial classes; tint them Mage
+  .messy-critical {
+    color: @ice-blue;
+  }
+  .bestial-failure {
+    color: @toxic-magenta;
+  }
+}
+
+// Dialogs spawned for Mage (e.g. Add Sphere) pick up the purple frame
+.wod5e.dialog.mage {
+  .window-content {
+    border-top: 3px solid @ascension-purple;
+  }
+}
+
+// Mage / Paradox dice in chat
+.mage-dice img,
+.paradox-dice img {
+  border-radius: 3px;
+}
+.paradox-dice img {
+  box-shadow: 0 0 3px fade(@toxic-magenta, 60%);
+}

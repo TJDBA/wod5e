@@ -61,6 +61,13 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/wod5e/display/wta/actors/parts/ban.hbs',
     'systems/wod5e/display/wta/actors/parts/guiding-spirit.hbs',
 
+    // Mage Sheet Partials
+    'systems/wod5e/display/mta/actors/parts/spheres.hbs',
+    'systems/wod5e/display/mta/actors/parts/avatar.hbs',
+    'systems/wod5e/display/mta/actors/parts/paradox.hbs',
+    'systems/wod5e/display/mta/actors/parts/paradox-check.hbs',
+    'systems/wod5e/display/mta/actors/parts/hubris.hbs',
+
     // SPC Sheet Partials
     'systems/wod5e/display/shared/actors/parts/spc/stats.hbs',
     'systems/wod5e/display/shared/actors/parts/spc/spc-traits.hbs',
@@ -103,6 +110,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/wod5e/display/ui/vampire-roll-dialog.hbs',
     'systems/wod5e/display/ui/werewolf-roll-dialog.hbs',
     'systems/wod5e/display/ui/hunter-roll-dialog.hbs',
+    'systems/wod5e/display/ui/mage-roll-dialog.hbs',
 
     // Chat Message Partials
     'systems/wod5e/display/ui/chat/chat-message-header.hbs',

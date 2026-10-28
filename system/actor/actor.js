@@ -7,10 +7,13 @@ import { getDerivedExperience } from './scripts/experience.js'
 import { prepareDisciplines } from './vtm/scripts/prepare-data.js'
 import { prepareEdges } from './htr/scripts/prepare-data.js'
 import { prepareGifts, prepareFormData } from './wta/scripts/prepare-data.js'
+import { prepareSpheres } from './mta/scripts/prepare-data.js'
 import { prepareExceptionalDicePools } from './scripts/prepare-exceptional-dice-pools.js'
 import { getVampireModifiers } from './vtm/scripts/vampire-bonuses.js'
 import { getHunterModifiers } from './htr/scripts/hunter-bonuses.js'
+import { getMageModifiers } from './mta/scripts/mage-bonuses.js'
 import { Disciplines } from '../api/def/disciplines.js'
+import { Spheres } from '../api/def/spheres.js'
 import { Skills } from '../api/def/skills.js'
 import { Attributes } from '../api/def/attributes.js'
 import { Renown } from '../api/def/renown.js'
@@ -91,7 +94,8 @@ export class WoDActor extends Actor {
       ghoul: 'vampire',
       hunter: 'hunter',
       werewolf: 'werewolf',
-      spirit: 'werewolf'
+      spirit: 'werewolf',
+      mage: 'mage'
     }
 
     // Set gamesystem of an SPC
@@ -143,6 +147,11 @@ export class WoDActor extends Actor {
       }
     }
 
+    // Set sphere data
+    if (systemData?.gamesystem === 'mage') {
+      systemData.spheres = await prepareSpheres(actorData)
+    }
+
     // If the actor is a player, update the default permissions to limited
     if (
       this.hasPlayerOwner &&
@@ -188,6 +197,10 @@ export class WoDActor extends Actor {
 
     if (actorData.type === 'hunter') {
       systemData.bonuses = await getHunterModifiers(systemData)
+    }
+
+    if (actorData.type === 'mage') {
+      systemData.bonuses = await getMageModifiers(systemData)
     }
 
     // Force a ghoul's hunger value to be 0
@@ -269,6 +282,9 @@ async function applyEffectData(actorData) {
         } else if (change.key === 'disciplines') {
           // Apply to all disciplines
           change.key = Disciplines.getList({ useValuePath: true })
+        } else if (change.key === 'spheres') {
+          // Apply to all spheres
+          change.key = Spheres.getList({ useValuePath: true })
         } else if (change.key === 'renown') {
           // Apply to all renown
           change.key = Renown.getList({ useValuePath: true })

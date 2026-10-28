@@ -87,11 +87,13 @@ export const loadSettings = async function () {
         await game.settings.set('wod5e', 'automatedHunger', false)
         await game.settings.set('wod5e', 'automatedOblivion', false)
         await game.settings.set('wod5e', 'automatedRage', false)
+        await game.settings.set('wod5e', 'automatedParadox', false)
       } else {
         await game.settings.set('wod5e', 'automatedWillpower', true)
         await game.settings.set('wod5e', 'automatedHunger', true)
         await game.settings.set('wod5e', 'automatedOblivion', true)
         await game.settings.set('wod5e', 'automatedRage', true)
+        await game.settings.set('wod5e', 'automatedParadox', true)
       }
 
       // Re-render the automation window once settings are updated
@@ -138,6 +140,16 @@ export const loadSettings = async function () {
   game.settings.register('wod5e', 'automatedRage', {
     name: game.i18n.localize('WOD5E.Settings.AutomateRage'),
     hint: game.i18n.localize('WOD5E.Settings.AutomateRageHint'),
+    scope: 'world',
+    config: false,
+    default: true,
+    type: Boolean
+  })
+
+  // Automated Paradox
+  game.settings.register('wod5e', 'automatedParadox', {
+    name: game.i18n.localize('WOD5E.Settings.AutomateParadox'),
+    hint: game.i18n.localize('WOD5E.Settings.AutomateParadoxHint'),
     scope: 'world',
     config: false,
     default: true,
