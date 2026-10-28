@@ -41,8 +41,8 @@
   "url": "https://github.com/TJDBA/wod5e",
   "bugs": "https://github.com/TJDBA/wod5e/issues",
   "background": "systems/wod5e/assets/images/wodcity.jpg",
-  "manifest": "https://raw.githubusercontent.com/TJDBA/wod5e/main/system.json",
-  "download": "https://github.com/TJDBA/wod5e/archive/refs/heads/main.zip",
+  "manifest": "https://raw.githubusercontent.com/TJDBA/wod5e/feat/mta-mage/system.json",
+  "download": "https://github.com/TJDBA/wod5e/archive/refs/heads/feat/mta-mage.zip",
   "documentTypes": {
     "Actor": {
       "mortal": {},
