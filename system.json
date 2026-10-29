@@ -41,8 +41,8 @@
   "url": "https://github.com/TJDBA/wod5e",
   "bugs": "https://github.com/TJDBA/wod5e/issues",
   "background": "systems/wod5e-mta/assets/images/wodcity.jpg",
-  "manifest": "https://raw.githubusercontent.com/TJDBA/wod5e/feat/mage-sphere-powers/system.json",
-  "download": "https://github.com/TJDBA/wod5e/archive/refs/heads/feat/mage-sphere-powers.zip",
+  "manifest": "https://raw.githubusercontent.com/TJDBA/wod5e/main/system.json",
+  "download": "https://github.com/TJDBA/wod5e/archive/refs/heads/main.zip",
   "documentTypes": {
     "Actor": {
       "mortal": {},
