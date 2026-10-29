@@ -11,7 +11,7 @@ export const _onAddEffect = async function (event, target) {
     keys: [],
     intValue: 0,
     strValue: '',
-    mode: CONST.ACTIVE_EFFECT_CHANGE_TYPES.add,
+    mode: CONST.ACTIVE_EFFECT_MODES.ADD,
     flatSource: 'static',
     type
   }

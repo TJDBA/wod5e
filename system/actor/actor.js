@@ -329,11 +329,11 @@ async function updateActorProperty(actor, key, mode, value) {
   const current = Number(foundry.utils.getProperty(actor, key))
   let updatedData
 
-  // Note: mode === 2 and mode === 5 are here because those are the pre-V14 version of the CONSTs
-  // Need a migration script later
-  if (mode === CONST.ACTIVE_EFFECT_CHANGE_TYPES.add || mode === 2) {
+  // V13: CONST.ACTIVE_EFFECT_MODES.ADD (2) / .OVERRIDE (5). The numeric fallbacks keep
+  // this working on V14 too, where the enum was renamed to ACTIVE_EFFECT_CHANGE_TYPES.
+  if (mode === CONST.ACTIVE_EFFECT_MODES.ADD || mode === 2) {
     updatedData = current + value
-  } else if (mode === CONST.ACTIVE_EFFECT_CHANGE_TYPES.override || mode === 5) {
+  } else if (mode === CONST.ACTIVE_EFFECT_MODES.OVERRIDE || mode === 5) {
     updatedData = value
   }
 

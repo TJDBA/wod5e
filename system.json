@@ -1,10 +1,10 @@
 {
   "id": "wod5e-mta",
-  "title": "World of Darkness 5e (+ Mage the Ascension)",
+  "title": "World of Darkness 5e (+ Mage the Ascension) [V13]",
   "description": "World of Darkness 5e system for Foundry VTT, with added Mage: The Ascension 5th Edition (M5) support.",
   "version": "5.3.28-mta.1",
   "compatibility": {
-    "minimum": "14",
+    "minimum": "13",
     "verified": "14.368",
     "maximum": ""
   },
@@ -36,13 +36,13 @@
   },
   "initiative": "1d10",
   "socket": true,
-  "changelog": "https://github.com/TJDBA/wod5e/releases",
+  "changelog": "https://github.com/TJDBA/wod5e-mta-v13/releases",
   "license": "./LICENSE.md",
-  "url": "https://github.com/TJDBA/wod5e",
-  "bugs": "https://github.com/TJDBA/wod5e/issues",
+  "url": "https://github.com/TJDBA/wod5e-mta-v13",
+  "bugs": "https://github.com/TJDBA/wod5e-mta-v13/issues",
   "background": "systems/wod5e-mta/assets/images/wodcity.jpg",
-  "manifest": "https://raw.githubusercontent.com/TJDBA/wod5e/feat/mta-mage/system.json",
-  "download": "https://github.com/TJDBA/wod5e/archive/refs/heads/feat/mta-mage.zip",
+  "manifest": "https://raw.githubusercontent.com/TJDBA/wod5e-mta-v13/main/system.json",
+  "download": "https://github.com/TJDBA/wod5e-mta-v13/archive/refs/heads/main.zip",
   "documentTypes": {
     "Actor": {
       "mortal": {},
