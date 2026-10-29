@@ -67,6 +67,11 @@ export const _onCreateItem = async function (event, target) {
       case 'power':
         itemName = game.i18n.format('WOD5E.VTM.NewStringPower', { string: itemName })
         break
+      case 'rote':
+        itemName = game.i18n.format('WOD5E.NewString', {
+          string: game.i18n.localize('WOD5E.MTA.Rote')
+        })
+        break
       case 'perk':
         itemName = game.i18n.format('WOD5E.HTR.NewStringPerk', { string: itemName })
         break
@@ -137,6 +142,11 @@ export const _onCreateItem = async function (event, target) {
       switch (type) {
         case 'power':
           itemName = game.i18n.format('WOD5E.VTM.NewStringPower', { string: itemName })
+          break
+        case 'rote':
+          itemName = game.i18n.format('WOD5E.NewString', {
+            string: game.i18n.localize('WOD5E.MTA.Rote')
+          })
           break
         case 'perk':
           itemName = game.i18n.format('WOD5E.HTR.NewStringPerk', { string: itemName })
@@ -300,6 +310,10 @@ async function appendSubtypeData(type, subtype, itemData) {
       break
     case 'weapon':
       itemData.weaponType = subtype
+      break
+    case 'rote':
+      itemData.sphere = subtype
+      itemData.isRote = true
       break
     default:
       itemData.subtype = subtype
