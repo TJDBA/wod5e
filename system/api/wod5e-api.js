@@ -176,7 +176,19 @@ export class wod5eAPI {
 
       // Keep track of what we're constructing the label out of here
       const labelArray = []
-      const valueArray = []
+      // If this roll originates from a Mage sphere, seed the label with the
+      // sphere's name so the roll reads "Sphere + Attribute/Skill".
+      if (dataset.sphere && WOD5E.Spheres) {
+        const sphereDef = WOD5E.Spheres.getList({})[dataset.sphere]
+        if (sphereDef?.displayName) labelArray.push(sphereDef.displayName)
+      }
+      // Seed the value array with any value paths supplied by the originating
+      // button (e.g. a Mage sphere's dots), so the dialog's skill/attribute
+      // selections are ADDED to that pre-selected pool instead of replacing it.
+      const valueArray =
+        dataset.valuePaths && !dataset.useAbsoluteValue
+          ? dataset.valuePaths.split(' ').filter((path) => path)
+          : []
       let selectorsArray = []
 
       // Handle adding a skill to the dicepool

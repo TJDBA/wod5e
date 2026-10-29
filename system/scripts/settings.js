@@ -8,6 +8,7 @@ import { Skills } from '../api/def/skills.js'
 import { Disciplines } from '../api/def/disciplines.js'
 import { Edges } from '../api/def/edges.js'
 import { Gifts } from '../api/def/gifts.js'
+import { Spheres } from '../api/def/spheres.js'
 import { cssVariablesRecord } from './update-css-variables.js'
 
 /**
@@ -190,6 +191,10 @@ export const loadSettings = async function () {
     gift: {
       defCategory: 'Gifts',
       defClass: Gifts
+    },
+    sphere: {
+      defCategory: 'Spheres',
+      defClass: Spheres
     }
   }
 
