@@ -17,6 +17,9 @@ export class RoteItemModel extends WoDItemModel {
     schema.sphere = new fields.StringField({ initial: 'correspondence' })
     schema.selected = new fields.BooleanField({ initial: false })
 
+    // True = an actual Rote (rollable, +1 bonus die). False = a Sphere level power (descriptive only, no roll).
+    schema.isRote = new fields.BooleanField({ initial: false })
+
     return schema
   }
 }

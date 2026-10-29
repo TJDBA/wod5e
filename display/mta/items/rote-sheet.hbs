@@ -29,6 +29,13 @@
                     {{selectOptions sphereOptions selected=selectedSphere localize=true}}
                 </select>
             </div>
+            <!-- Mark this as an actual Rote (rollable, +1 die) vs a Sphere level power (descriptive only) -->
+            <div class="flexcol isrote flex-center item-resource">
+                <label>
+                    <b>{{localize "WOD5E.MTA.IsRote"}}</b>
+                </label>
+                <input name="system.isRote" type="checkbox" {{checked isRote}}/>
+            </div>
         </div>
     </div>
 </header>

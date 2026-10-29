@@ -52,12 +52,14 @@
                                         <div class="icon power-select{{#if rote.system.selected}} selected{{/if}}" data-action="selectSphereRote" data-rote="{{rote.id}}" style="background-image: url('{{rote.img}}');"></div>
                                         <a class="select-label" data-action="selectSphereRote" data-rote="{{rote.id}}">{{rote.name}}</a>
                                         <div class="item-controls">
-                                            <!-- Roll the rote: Sphere + Attribute/Skill, +1 bonus die -->
-                                            <a class="rollable rote-dice" data-action="roll" title="{{localize 'WOD5E.MTA.RollRote'}}"
-                                                data-value-paths="spheres.{{rote.system.sphere}}.value" data-sphere="{{rote.system.sphere}}"
-                                                data-flat-mod="1" data-select-dialog="true">
-                                                <i class="fa-solid fa-dice-d10"></i>
-                                            </a>
+                                            <!-- Roll the rote: Sphere + Attribute/Skill, +1 bonus die. Only for actual rotes, not sphere level powers. -->
+                                            {{#if rote.system.isRote}}
+                                                <a class="rollable rote-dice" data-action="roll" title="{{localize 'WOD5E.MTA.RollRote'}}"
+                                                    data-value-paths="spheres.{{rote.system.sphere}}.value" data-sphere="{{rote.system.sphere}}"
+                                                    data-flat-mod="1" data-select-dialog="true">
+                                                    <i class="fa-solid fa-dice-d10"></i>
+                                                </a>
+                                            {{/if}}
                                         </div>
                                     </span>
                                 </li>
@@ -96,12 +98,14 @@
                     <div class="flex-center">
                         <div class="flexrow">
                             <span class="item-name item-header">
-                                <!-- Roll the rote: Sphere + Attribute/Skill, +1 bonus die -->
-                                <a class="item-image rollable rote-dice" data-action="roll" title="{{localize 'WOD5E.MTA.RollRote'}}"
-                                    data-value-paths="spheres.{{selectedSphereRote.system.sphere}}.value" data-sphere="{{selectedSphereRote.system.sphere}}"
-                                    data-flat-mod="1" data-select-dialog="true">
-                                    <i class="fa-solid fa-dice-d10"></i>
-                                </a>
+                                <!-- Roll the rote: Sphere + Attribute/Skill, +1 bonus die. Only for actual rotes, not sphere level powers. -->
+                                {{#if selectedSphereRote.system.isRote}}
+                                    <a class="item-image rollable rote-dice" data-action="roll" title="{{localize 'WOD5E.MTA.RollRote'}}"
+                                        data-value-paths="spheres.{{selectedSphereRote.system.sphere}}.value" data-sphere="{{selectedSphereRote.system.sphere}}"
+                                        data-flat-mod="1" data-select-dialog="true">
+                                        <i class="fa-solid fa-dice-d10"></i>
+                                    </a>
+                                {{/if}}
                                 {{selectedSphereRote.name}}
                             </span>
                             <div class="item-controls flex-group-right">

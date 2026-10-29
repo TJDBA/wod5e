@@ -85,6 +85,7 @@ export class RoteItemSheet extends HandlebarsApplicationMixin(WoDItemBase) {
     data.selectedSphere = itemData.sphere
     data.level = itemData.level
     data.cost = itemData.cost
+    data.isRote = itemData.isRote
 
     return data
   }
