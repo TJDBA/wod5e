@@ -1,5 +1,6 @@
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { _onConfirmRoll } from '../actor/scripts/roll.js'
+import { _onParadoxCheck } from '../actor/mta/scripts/paradox-check.js'
 import { generateLocalizedLabel } from './generate-localization.js'
 
 export class wod5eAPI {
@@ -136,6 +137,16 @@ export class wod5eAPI {
           ? actor.system.hunger.value
           : 0,
       actorType: actor.type
+    }
+
+    // Quintessence: a Mage may spend Quintessence on a Sphere roll to add bonus
+    // dice (one die per point, player's choice), up to a cap of Arete + Prime
+    // Sphere rating. Each point spent triggers one Paradox check after the roll.
+    // Only offered on Mage Sphere rolls (the dataset carries a sphere).
+    if (actor.system.gamesystem === 'mage' && dataset.sphere) {
+      const areteValue = actor.system?.arete?.value || 0
+      const primeValue = actor.system?.spheres?.prime?.value || 0
+      dialogData.quintessenceMax = areteValue + primeValue
     }
     // Render the template
     const content = await foundry.applications.handlebars.renderTemplate(dialogTemplate, dialogData)
@@ -300,7 +311,32 @@ export class wod5eAPI {
       // Join the selectors
       modifiedDataset.selectors = selectorsArray.join(' ')
 
+      // Quintessence: the player may have chosen to spend Quintessence on this
+      // Sphere roll. Each point adds one bonus die (folded into the flat mod)
+      // and triggers one Paradox check after the roll resolves.
+      const quintessenceSpent =
+        actor.system.gamesystem === 'mage' && dataset.sphere
+          ? Math.max(0, parseInt(result.quintessenceSpend) || 0)
+          : 0
+      if (quintessenceSpent > 0) {
+        modifiedDataset.flatMod = (parseInt(modifiedDataset.flatMod) || 0) + quintessenceSpent
+        modifiedDataset.label = `${modifiedDataset.label} + ${game.i18n.localize('WOD5E.MTA.Quintessence')} (${quintessenceSpent})`
+      }
+
       await _onConfirmRoll(modifiedDataset, actor)
+
+      // Fire one Paradox check per point of Quintessence spent, after the main
+      // Sphere roll. Each is a separate 1-die Paradox check (6+ safe, failure
+      // adds Paradox), mirroring the rote cost mechanic.
+      if (quintessenceSpent > 0) {
+        for (let i = 0; i < quintessenceSpent; i++) {
+          await _onParadoxCheck(
+            actor,
+            { name: game.i18n.localize('WOD5E.MTA.Quintessence'), system: { cost: 1 } },
+            modifiedDataset.rollMode
+          )
+        }
+      }
     }
   }
 
