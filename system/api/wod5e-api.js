@@ -140,12 +140,14 @@ export class wod5eAPI {
     }
 
     // Quintessence: a Mage may spend Quintessence on a Sphere roll to add bonus
-    // dice (one die per point, player's choice), up to a cap of Arete + Prime
-    // Sphere rating. Each point spent triggers one Paradox check after the roll.
+    // dice (one die per point, player's choice). No hard cap is enforced; the
+    // Arete + Prime Sphere rating is shown only as a suggested limit. Each point
+    // spent triggers one Paradox check after the roll.
     // Only offered on Mage Sphere rolls (the dataset carries a sphere).
     if (actor.system.gamesystem === 'mage' && dataset.sphere) {
       const areteValue = actor.system?.arete?.value || 0
       const primeValue = actor.system?.spheres?.prime?.value || 0
+      dialogData.showQuintessence = true
       dialogData.quintessenceMax = areteValue + primeValue
     }
     // Render the template
