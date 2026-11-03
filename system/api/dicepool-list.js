@@ -56,5 +56,17 @@ export const getDicepoolList = async (document) => {
     }
   }
 
+  // Mage
+  if (gamesystem === 'mage' || isNotEmbedded) {
+    const spheres = WOD5E.Spheres.getList({})
+    for (const [key, value] of Object.entries(spheres)) {
+      masterList.push({
+        value: `spheres.${key}`,
+        label: value.displayName,
+        group: game.i18n.localize('WOD5E.MTA.Spheres')
+      })
+    }
+  }
+
   return masterList
 }
