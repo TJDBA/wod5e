@@ -45,10 +45,8 @@ export const prepareAvatarContext = async function (context, actor) {
 
   // Part-specific data
   context.arete = actorData.arete
-  context.quintessence = actorData.quintessence
   context.paradox = actorData.paradox
   context.hubris = actorData.hubris
-  context.avatar = actorData.avatar
   context.essence = actorData.essence
   context.resonance = actorData.resonance
   context.affiliation = actorHeaders.affiliation

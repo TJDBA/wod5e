@@ -12,15 +12,9 @@ export function mageFields() {
     }),
 
     // Arete is the Mage's power rating (akin to Blood Potency). It limits the
-    // level of Spheres and how much Quintessence can be channeled.
+    // level of Spheres the mage can use.
     arete: new fields.SchemaField({
       value: new fields.NumberField({ initial: 1 })
-    }),
-
-    // Quintessence: the raw fabric of creation spent to empower/counter spells.
-    quintessence: new fields.SchemaField({
-      value: new fields.NumberField({ initial: 0 }),
-      max: new fields.NumberField({ initial: 0 })
     }),
 
     // Hubris acts as the Mage degeneration/corruption track (akin to Humanity).

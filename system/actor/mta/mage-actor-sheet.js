@@ -142,7 +142,6 @@ export class MageActorSheet extends HandlebarsApplicationMixin(WoDActorBase) {
     // Prepare mage-specific items
     data.paradox = actorData.paradox
     data.arete = actorData.arete
-    data.quintessence = actorData.quintessence
     data.hubris = actorData.hubris
     data.faction = factionFilter[0]
     data.affiliation = actorHeaders.affiliation

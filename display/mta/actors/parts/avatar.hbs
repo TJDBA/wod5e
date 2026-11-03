@@ -18,31 +18,6 @@
 
             <div class="flex-group-center nogrow">
                 <div class="flexcol resource">
-                    <label class="resource-label field-header">{{localize "WOD5E.MTA.Avatar"}}</label>
-                    <div class="resource-content flexrow flex-center flex-between">
-                        <div class="resource-value" data-value="{{avatar.value}}" data-name="system.avatar.value">
-                            <span class="resource-value-empty" data-action="dotCounterEmpty"></span>
-                            {{#numLoop 10}}
-                            <span class="resource-value-step" data-action="dotCounterChange" data-index="{{this}}"></span>
-                            {{/numLoop}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-group-center nogrow">
-                <div class="flexcol resource">
-                    <label class="resource-label field-header">{{localize "WOD5E.MTA.Quintessence"}}</label>
-                    <div class="flexrow">
-                        <input class="resource" type="number" min="0" name="system.quintessence.value" value="{{quintessence.value}}"/>
-                        <span class="flex-center">/</span>
-                        <input class="resource" type="number" min="0" name="system.quintessence.max" value="{{quintessence.max}}"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-group-center nogrow">
-                <div class="flexcol resource">
                     <div class="system-rollable paradox-roll" data-action="roll" name="paradox" data-disable-basic-dice="true"
                         data-use-absolute-value="true" data-absolute-value="1" data-label="{{localize 'WOD5E.MTA.ParadoxCheck'}}"
                         data-increase-hunger="true" data-difficulty="1" title="{{localize 'WOD5E.MTA.RollParadox'}}">
@@ -50,6 +25,10 @@
                         <i class="fa-solid fa-atom"></i>
                     </div>
                     {{> "systems/wod5e-mta/display/mta/actors/parts/paradox.hbs"}}
+                    <div class="flexcol permanent-paradox">
+                        <label class="resource-label field-header">{{localize "WOD5E.MTA.PermanentParadox"}}</label>
+                        <input class="resource" type="number" min="0" name="system.paradox.permanent" value="{{paradox.permanent}}"/>
+                    </div>
                 </div>
             </div>
         </div>
