@@ -138,8 +138,9 @@ export const _onConfirmRoll = async function (dataset, actor) {
     }
   }
 
-  // Send the roll to the system
-  WOD5eDice.Roll({
+  // Send the roll to the system. Awaited so callers (e.g. Quintessence paradox
+  // checks) only continue after the roll dialog has closed and the roll is done.
+  await WOD5eDice.Roll({
     basicDice,
     advancedDice,
     actor,
