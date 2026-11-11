@@ -266,12 +266,7 @@ class WOD5eDice {
         ? Math.max(0, parseInt(formData?.querySelector('#inputQuintessence')?.value) || 0)
         : 0
       if (quintessenceSpent > 0 && actor) {
-        // Spend the Q from the sheet counter (never below 0)
-        const currentQ = actor.system?.quintessence?.value ?? 0
-        await actor.update({
-          'system.quintessence.value': Math.max(0, currentQ - quintessenceSpent)
-        })
-
+        // The sheet counter is not reduced: players may have untracked Q sources.
         // Imported here to avoid a circular import with paradox-check.js
         const { _onParadoxCheck } = await import('../actor/mta/scripts/paradox-check.js')
         for (let i = 0; i < quintessenceSpent; i++) {
