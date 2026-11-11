@@ -32,4 +32,15 @@
     </div>
   {{/unless}}
 </div>
+{{#if showQuintessence}}
+  <div class="quintessence-group flex-group-center">
+    <label for="inputQuintessence">{{localize 'WOD5E.MTA.SpendQuintessence'}} ({{quintessenceAvailable}})</label>
+    <div class="flexrow">
+      <i class="fas fa-minus dialog-control dialog-minus" data-action="minus" data-resource="inputQuintessence" data-resource-action="minus"></i>
+      <input type="number" min="0" id="inputQuintessence" value="0">
+      <i class="fas fa-plus dialog-control dialog-plus" data-action="plus" data-resource="inputQuintessence" data-resource-action="plus"></i>
+    </div>
+    <div class="quintessence-note">{{localize 'WOD5E.MTA.QuintessenceNote'}}</div>
+  </div>
+{{/if}}
 {{> "systems/wod5e-mta/display/ui/parts/roll-dialog-base.hbs"}}

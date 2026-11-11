@@ -131,7 +131,8 @@ class WOD5eDice {
     disableMessageOutput = false,
     advancedCheckDice = 0,
     system = actor?.system?.gamesystem || 'mortal',
-    originMessage = ''
+    originMessage = '',
+    showQuintessence = false
   }) {
     // Grab the dice-related data for the given system
     const systemData = WOD5E.Systems.getList({})[system]
@@ -258,6 +259,30 @@ class WOD5eDice {
         })
       }
 
+      // Quintessence: roll one Paradox check per point spent in the roll dialog.
+      // There is no extra check for the spell itself; that comes from the
+      // Paradox dice in the power roll.
+      const quintessenceSpent = showQuintessence
+        ? Math.max(0, parseInt(formData?.querySelector('#inputQuintessence')?.value) || 0)
+        : 0
+      if (quintessenceSpent > 0 && actor) {
+        // Spend the Q from the sheet counter (never below 0)
+        const currentQ = actor.system?.quintessence?.value ?? 0
+        await actor.update({
+          'system.quintessence.value': Math.max(0, currentQ - quintessenceSpent)
+        })
+
+        // Imported here to avoid a circular import with paradox-check.js
+        const { _onParadoxCheck } = await import('../actor/mta/scripts/paradox-check.js')
+        for (let i = 0; i < quintessenceSpent; i++) {
+          await _onParadoxCheck(
+            actor,
+            { name: game.i18n.localize('WOD5E.MTA.Quintessence'), system: { cost: 1 } },
+            rollMode
+          )
+        }
+      }
+
       // Send the results of the roll back to any functions that need it
       if (callback) {
         callback(null, {
@@ -341,7 +366,9 @@ class WOD5eDice {
         difficulty,
         rollMode,
         rollModes: CONFIG.Dice.rollModes,
-        situationalModifiers
+        situationalModifiers,
+        showQuintessence,
+        quintessenceAvailable: actor?.system?.quintessence?.value ?? 0
       }
       // Render the dialog
       const content = await foundry.applications.handlebars.renderTemplate(
@@ -413,7 +440,12 @@ class WOD5eDice {
                   return modifierTotal + (el.querySelector('.mod-value')?.valueAsNumber ?? 0)
                 }, 0)
 
-              let modifiedBasicValue = basicValue + modifierTotal
+              // Each point of Quintessence spent adds one die
+              const quintessenceDice = showQuintessence
+                ? Math.max(0, dialogHTML.querySelector('#inputQuintessence')?.valueAsNumber || 0)
+                : 0
+
+              let modifiedBasicValue = basicValue + modifierTotal + quintessenceDice
               let modifiedAdvancedValue = advancedValue
 
               // If the basic pool drops below 0, carry the remainder into the advanced dice pool
@@ -603,7 +635,10 @@ class WOD5eDice {
       }
 
       // Handle Oblivion rouse checks here
-      if (selectors.includes('oblivion-rouse') && game.settings.get('wod5e-mta', 'automatedOblivion')) {
+      if (
+        selectors.includes('oblivion-rouse') &&
+        game.settings.get('wod5e-mta', 'automatedOblivion')
+      ) {
         const oblivionTriggers = diceResults.filter(
           (result) => [1, 10].includes(result.result) && !result.discarded
         ).length

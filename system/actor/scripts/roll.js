@@ -161,6 +161,8 @@ export const _onConfirmRoll = async function (dataset, actor) {
     selectors,
     macro,
     advancedCheckDice,
-    originMessage
+    originMessage,
+    // Offer the Quintessence spot on Mage sphere/rote rolls only
+    showQuintessence: system === 'mage' && !!dataset.sphere
   })
 }

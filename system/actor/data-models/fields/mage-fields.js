@@ -17,6 +17,12 @@ export function mageFields() {
       value: new fields.NumberField({ initial: 1 })
     }),
 
+    // Quintessence (Q): a simple counter. Spending Q on a roll adds dice and
+    // triggers one Paradox check per point spent.
+    quintessence: new fields.SchemaField({
+      value: new fields.NumberField({ initial: 0, min: 0 })
+    }),
+
     // Hubris acts as the Mage degeneration/corruption track (akin to Humanity).
     // Quiet is tracked alongside it as the "stains"-equivalent; at 6 the
     // character becomes an unplayable NPC.

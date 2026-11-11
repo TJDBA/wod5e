@@ -90,21 +90,4 @@
     </div>
   {{/ifeq}}
 
-  <!-- Mage Sphere roll: spend Quintessence for bonus dice (one per point).
-       Each point spent rolls one Paradox check. No hard cap; the Arete + Prime
-       Sphere rating is shown as a suggested limit only. -->
-  {{#if showQuintessence}}
-    <hr>
-    <div class="secondary-selector">
-      <div class="selector-title">
-        {{localize "WOD5E.MTA.SpendQuintessence"}}
-        <span class="quintessence-cap">({{localize "WOD5E.MTA.Suggested"}} {{quintessenceMax}})</span>
-      </div>
-      <div class="selector-content flexrow flex-center">
-        <input id="quintessenceSpend" name="quintessenceSpend" type="number"
-          value="0" min="0" step="1"/>
-      </div>
-      <div class="quintessence-note">{{localize "WOD5E.MTA.QuintessenceNote"}}</div>
-    </div>
-  {{/if}}
 </form>
