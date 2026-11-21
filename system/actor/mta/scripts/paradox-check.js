@@ -75,6 +75,17 @@ export const _onParadoxCheck = async function (event) {
         const totalElement = element.querySelector('#paradoxTotal')
         if (totalElement) totalElement.textContent = total
       }
+      // Witnesses cannot be active without Vulgar: checking Witnesses also checks
+      // Vulgar, and unchecking Vulgar also unchecks Witnesses
+      const vulgar = element.querySelector('#optVulgar')
+      const witnesses = element.querySelector('#optWitnesses')
+      witnesses?.addEventListener('change', () => {
+        if (witnesses.checked && vulgar) vulgar.checked = true
+      })
+      vulgar?.addEventListener('change', () => {
+        if (!vulgar.checked && witnesses) witnesses.checked = false
+      })
+
       // Clicks on +/- run their action first, so read the total on the next tick
       element.addEventListener('click', () => setTimeout(refresh, 0))
       element.addEventListener('input', refresh)
