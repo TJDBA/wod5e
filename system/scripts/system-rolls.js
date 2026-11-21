@@ -261,6 +261,19 @@ class WOD5eDice {
         })
       }
 
+      // Mage: Quintessence spent on this roll comes off the sheet counter (never below 0)
+      if (showQuintessence && actor) {
+        const quintessenceSpent = Math.max(
+          0,
+          parseInt(formData?.querySelector('#inputQuintessence')?.value) || 0
+        )
+        if (quintessenceSpent > 0) {
+          const currentQuintessence = actor.system?.quintessence?.value ?? 0
+          await actor.update({
+            'system.quintessence.value': Math.max(0, currentQuintessence - quintessenceSpent)
+          })
+        }
+      }
       // Send the results of the roll back to any functions that need it
       if (callback) {
         callback(null, {
@@ -418,12 +431,7 @@ class WOD5eDice {
                   return modifierTotal + (el.querySelector('.mod-value')?.valueAsNumber ?? 0)
                 }, 0)
 
-              // Each point of Quintessence spent adds one die
-              const quintessenceDice = showQuintessence
-                ? Math.max(0, dialogHTML.querySelector('#inputQuintessence')?.valueAsNumber || 0)
-                : 0
-
-              let modifiedBasicValue = basicValue + modifierTotal + quintessenceDice
+              let modifiedBasicValue = basicValue + modifierTotal
               let modifiedAdvancedValue = advancedValue
 
               // If the basic pool drops below 0, carry the remainder into the advanced dice pool
@@ -459,6 +467,50 @@ class WOD5eDice {
           const basicDiceInput = dialogHTML.querySelector('#inputBasicDice')
           const advancedDiceInput = dialogHTML.querySelector('#inputAdvancedDice')
 
+          // Mage: each Quintessence spent adds one die to the pool. Show it in the
+          // dice inputs right away. New dice become Paradox dice first, until the
+          // Paradox dice reach the actor's Paradox score, then normal dice.
+          const quintessenceInput = dialogHTML.querySelector('#inputQuintessence')
+          if (quintessenceInput) {
+            let lastQuintessence = 0
+            const syncQuintessence = () => {
+              const quintessence = Math.max(0, quintessenceInput.valueAsNumber || 0)
+              const change = quintessence - lastQuintessence
+              lastQuintessence = quintessence
+              if (!change) return
+
+              let basic = basicDiceInput?.valueAsNumber ?? 0
+              let advanced = advancedDiceInput?.valueAsNumber ?? 0
+              const paradoxScore = actor?.system?.paradox?.value ?? 0
+
+              if (change > 0) {
+                let adding = change
+                if (advancedDiceInput && advanced < paradoxScore) {
+                  const toParadox = Math.min(adding, paradoxScore - advanced)
+                  advanced += toParadox
+                  adding -= toParadox
+                }
+                basic += adding
+              } else {
+                let removing = -change
+                const fromBasic = Math.min(removing, basic)
+                basic -= fromBasic
+                removing -= fromBasic
+                advanced = Math.max(advanced - removing, 0)
+              }
+
+              if (basicDiceInput) basicDiceInput.value = basic
+              if (advancedDiceInput) advancedDiceInput.value = advanced
+            }
+            // The + and - buttons run their action first, so read on the next tick
+            dialogHTML.addEventListener('click', (event) => {
+              if (event.target.closest?.('[data-resource="inputQuintessence"]')) {
+                setTimeout(syncQuintessence, 0)
+              }
+            })
+            quintessenceInput.addEventListener('input', syncQuintessence)
+            quintessenceInput.addEventListener('change', syncQuintessence)
+          }
           // Get the values
           // Add event listeners to the situational modifier toggles
           dialogHTML.querySelectorAll('.mod-checkbox').forEach(function (el) {
