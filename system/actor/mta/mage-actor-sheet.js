@@ -8,6 +8,7 @@ import {
   _onSelectSphereRote
 } from './scripts/spheres.js'
 import { _onHubrisRoll } from './scripts/roll-hubris.js'
+import { _onParadoxCheck } from './scripts/paradox-check.js'
 // Base actor sheet to extend from
 import { WoDActorBase } from '../wod-actor-base.js'
 // Mixin
@@ -26,7 +27,8 @@ export class MageActorSheet extends HandlebarsApplicationMixin(WoDActorBase) {
       sphereChat: _onSphereToChat,
       selectSphere: _onSelectSphere,
       selectSphereRote: _onSelectSphereRote,
-      hubrisRoll: _onHubrisRoll
+      hubrisRoll: _onHubrisRoll,
+      paradoxCheck: _onParadoxCheck
     }
   }
 

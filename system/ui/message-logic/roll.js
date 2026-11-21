@@ -13,6 +13,8 @@ export async function processRoll(context) {
       flavor: roll.options.flavor || '',
       difficulty: roll.options.difficulty || 0,
       activeModifiers: roll.options.activeModifiers || {},
+      paradoxScore: roll.options.paradoxScore,
+      isParadoxCheck: roll.options.isParadoxCheck,
       data: context.flags.data || {},
       isContentVisible: context.isContentVisible
     })

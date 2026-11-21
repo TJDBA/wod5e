@@ -128,21 +128,6 @@
                                     <b>{{localize "WOD5E.Level"}}: {{selectedSphereRote.system.level}}</b>
                                 </div>
                             </div>
-                            {{#ifgr selectedSphereRote.system.cost 0}}
-                                <div class="flex-center">
-                                    <div>
-                                        <b>
-                                            {{localize 'WOD5E.ItemsList.Cost'}}:
-                                            {{selectedSphereRote.system.cost}} {{localize 'WOD5E.MTA.ParadoxChecks'}}
-                                            <a class="item-image rollable-item" data-action="roll" data-disable-basic-dice="true" data-use-absolute-value="true" data-selectors="paradox"
-                                                data-absolute-value="{{selectedSphereRote.system.cost}}" data-label="{{localize 'WOD5E.MTA.ParadoxCheck'}} - {{selectedSphereRote.name}}" data-increase-hunger="true"
-                                                title="{{localize 'WOD5E.MTA.RollParadox'}}" data-item-id="{{selectedSphereRote.id}}">
-                                                <i class="fa-solid fa-dice-d10"></i>
-                                            </a>
-                                        </b>
-                                    </div>
-                                </div>
-                            {{/ifgr}}
                         </div>
                         {{#if selectedSphereRoteDescription}}
                             <div class="power-description">

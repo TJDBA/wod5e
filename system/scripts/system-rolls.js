@@ -230,7 +230,9 @@ class WOD5eDice {
         title,
         flavor,
         activeModifiers,
-        rollMode
+        rollMode,
+        // Mage rolls remember the Paradox score at the time of the roll
+        paradoxScore: system === 'mage' ? actor?.system?.paradox?.value : undefined
       }
 
       // Send the roll to chat
@@ -257,25 +259,6 @@ class WOD5eDice {
           increaseHunger: system === 'vampire',
           decreaseRage: system === 'werewolf'
         })
-      }
-
-      // Quintessence: roll one Paradox check per point spent in the roll dialog.
-      // There is no extra check for the spell itself; that comes from the
-      // Paradox dice in the power roll.
-      const quintessenceSpent = showQuintessence
-        ? Math.max(0, parseInt(formData?.querySelector('#inputQuintessence')?.value) || 0)
-        : 0
-      if (quintessenceSpent > 0 && actor) {
-        // The sheet counter is not reduced: players may have untracked Q sources.
-        // Imported here to avoid a circular import with paradox-check.js
-        const { _onParadoxCheck } = await import('../actor/mta/scripts/paradox-check.js')
-        for (let i = 0; i < quintessenceSpent; i++) {
-          await _onParadoxCheck(
-            actor,
-            { name: game.i18n.localize('WOD5E.MTA.Quintessence'), system: { cost: 1 } },
-            rollMode
-          )
-        }
       }
 
       // Send the results of the roll back to any functions that need it

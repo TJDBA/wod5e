@@ -70,6 +70,11 @@ export const _assignToActorField = async (fields, value, actor) => {
       console.warn(`World of Darkness 5e | Item with ID ${itemId} not found.`)
     }
   } else {
+    // A Mage's Paradox can never be set below their Permanent Paradox
+    if (actor.type === 'mage' && fields.join('.') === 'system.paradox.value') {
+      value = Math.max(value, actor.system?.paradox?.permanent || 0)
+    }
+
     try {
       actor.update({
         [`${fields.join('.')}`]: value

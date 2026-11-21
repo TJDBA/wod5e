@@ -20,6 +20,8 @@ export async function generateRollMessageData({
   flavor = '',
   difficulty = 0,
   activeModifiers,
+  paradoxScore,
+  isParadoxCheck = false,
   isContentVisible = true
 }) {
   if (!(roll instanceof WOD5eRoll)) {
@@ -42,7 +44,8 @@ export async function generateRollMessageData({
 
   const { totalResult, totalAndDifficulty, labelData, resultText } = await generateResult(
     basicDice,
-    advancedDice
+    advancedDice,
+    { paradoxScore, isParadoxCheck }
   )
 
   // Construct the resultLabel from labelClass and labelText
@@ -166,7 +169,10 @@ export async function generateRollMessageData({
 
       // Increase the number of critfails collected across the dice
       if (
-        (dieResult === 'criticalFailure' || dieResult === 'bestial' || dieResult === 'brutal' || dieResult === 'backlash') &&
+        (dieResult === 'criticalFailure' ||
+          dieResult === 'bestial' ||
+          dieResult === 'brutal' ||
+          dieResult === 'backlash') &&
         !die.discarded
       ) {
         critFails++
@@ -182,7 +188,7 @@ export async function generateRollMessageData({
     return rollData
   }
 
-  async function generateResult(basicDice, advancedDice) {
+  async function generateResult(basicDice, advancedDice, mageData = {}) {
     // Calculate the totals across the basic and advanced dice
     const basicTotal = basicDice ? basicDice.total : 0
     const advancedTotal = advancedDice ? advancedDice.total : 0
@@ -226,7 +232,8 @@ export async function generateRollMessageData({
       totalResult,
       difficulty,
       basicDice,
-      advancedDice
+      advancedDice,
+      ...mageData
     })
 
     return { totalResult, totalAndDifficulty, labelData, resultText }
