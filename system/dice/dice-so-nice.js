@@ -658,10 +658,11 @@ export const loadDiceSoNice = async function (dice3d) {
       name: 'mage',
       description: 'Mage Dice',
       category: 'V5',
-      foreground: '#ffffff',
-      background: '#4A154B',
+      // Royal purple body; the gold symbols come from the face images
+      foreground: '#D4AF37',
+      background: '#5B2A86',
       texture: 'none',
-      edge: '#2D0031',
+      edge: '#3B1A5A',
       material: 'plastic',
       font: 'Arial Black'
     },
@@ -673,10 +674,11 @@ export const loadDiceSoNice = async function (dice3d) {
       name: 'paradox',
       description: 'Paradox Dice',
       category: 'V5',
-      foreground: '#ffffff',
-      background: '#9A0054',
+      // Burgundy body; the teal symbols come from the face images
+      foreground: '#008080',
+      background: '#800020',
       texture: 'none',
-      edge: '#D8005A',
+      edge: '#4D0013',
       material: 'plastic',
       font: 'Arial Black'
     },
@@ -712,7 +714,7 @@ export const loadDiceSoNice = async function (dice3d) {
           'systems/wod5e-mta/assets/icons/dsn/mage-success-dsn-bump.png',
           'systems/wod5e-mta/assets/icons/dsn/mage-crit-dsn-bump.png'
         ],
-        colorset: dsnSystem === 'wod5e-mta' ? 'mage' : undefined,
+        colorset: 'mage',
         system: dsnSystem
       },
       'd10'
@@ -745,7 +747,7 @@ export const loadDiceSoNice = async function (dice3d) {
           'systems/wod5e-mta/assets/icons/dsn/paradox-success-dsn-bump.png',
           'systems/wod5e-mta/assets/icons/dsn/paradox-crit-dsn-bump.png'
         ],
-        colorset: dsnSystem === 'wod5e-mta' ? 'paradox' : undefined,
+        colorset: 'paradox',
         system: dsnSystem
       },
       'd10'
