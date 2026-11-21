@@ -62,6 +62,12 @@ export const _onConfirmRoll = async function (dataset, actor) {
     disableAdvancedDice = true
   }
 
+  // A Mage only uses Paradox dice on Sphere (spellcasting) rolls; a skill or
+  // attribute roll never swaps dice for Paradox dice
+  if (actor.system.gamesystem === 'mage' && !dataset.sphere) {
+    disableAdvancedDice = true
+  }
+
   // Variables yet to be defined
   let basicDice, advancedDice
 
@@ -127,7 +133,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
       // Calculate the number of normal dice to roll by subtracting
       // the number of rage dice from them, minimum zero
       basicDice = Math.max(basicDice - advancedDice, 0)
-    } else if (system === 'mage') {
+    } else if (system === 'mage' && dataset.sphere) {
       // Ensure that the number of Paradox dice doesn't exceed the
       // total number of dice
       advancedDice = Math.min(basicDice, advancedDice)

@@ -152,7 +152,11 @@ class WOD5eDice {
       if (parseInt(inputBasicDice) === 0 && parseInt(inputAdvancedDice) === 0) {
         // Determine if the system uses a resource (like hunger or rage)
         let resourceValue = 0
-        if (systemData?.usesResourceOnAdvancedDice && systemData?.resourceValuePath) {
+        if (
+          !disableAdvancedDice &&
+          systemData?.usesResourceOnAdvancedDice &&
+          systemData?.resourceValuePath
+        ) {
           // Extract resource value
           resourceValue = foundry.utils.getProperty(actor.system, systemData.resourceValuePath) ?? 0
         }

@@ -158,7 +158,19 @@ export class wod5eAPI {
           label: game.i18n.localize('WOD5E.Cancel')
         }
       ],
-      classes: ['wod5e', actor.system.gamesystem]
+      classes: ['wod5e', actor.system.gamesystem],
+      render: (_event, dialog) => {
+        // A Mage Sphere roll takes a skill OR an attribute, never both
+        if (!(actor.system.gamesystem === 'mage' && dataset.sphere)) return
+        const skillElement = dialog.element.querySelector('#skillSelect')
+        const attributeElement = dialog.element.querySelector('#attributeSelect')
+        skillElement?.addEventListener('change', () => {
+          if (skillElement.value && attributeElement) attributeElement.value = ''
+        })
+        attributeElement?.addEventListener('change', () => {
+          if (attributeElement.value && skillElement) skillElement.value = ''
+        })
+      }
     })
 
     if (result !== 'cancel') {
@@ -183,11 +195,12 @@ export class wod5eAPI {
         const sphereDef = WOD5E.Spheres.getList({})[dataset.sphere]
         if (sphereDef?.displayName) labelArray.push(sphereDef.displayName)
       }
-      // Seed the value array with any value paths supplied by the originating
-      // button (e.g. a Mage sphere's dots), so the dialog's skill/attribute
-      // selections are ADDED to that pre-selected pool instead of replacing it.
+      // Seed the value array with the Sphere's own dots on a Mage Sphere roll, so the
+      // dropdown selection is ADDED to them. For a clicked skill or attribute the dropdown
+      // already has that stat selected, so only the dropdown choices count (seeding it
+      // here would count the stat twice).
       const valueArray =
-        dataset.valuePaths && !dataset.useAbsoluteValue
+        dataset.sphere && dataset.valuePaths && !dataset.useAbsoluteValue
           ? dataset.valuePaths.split(' ').filter((path) => path)
           : []
       let selectorsArray = []
