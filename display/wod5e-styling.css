@@ -189,6 +189,14 @@
 .paradox-dice img {
   box-shadow: 0 0 3px rgba(216, 0, 90, 0.6);
 }
+.dice-tooltip .dice-rolls .roll.paradox-die {
+  background: #800020;
+  color: #40c8c8;
+  border-radius: 4px;
+  font-weight: bold;
+  text-shadow: none;
+  filter: none;
+}
 
 :root {
   --mortal-color-1: #302d5bf0;
