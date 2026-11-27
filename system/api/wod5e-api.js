@@ -135,7 +135,9 @@ export class wod5eAPI {
         actor.system.gamesystem === 'vampire' && actor.type !== 'ghoul'
           ? actor.system.hunger.value
           : 0,
-      actorType: actor.type
+      actorType: actor.type,
+      // A Mage Sphere roll is Sphere + Skill only, so the dialog hides the Attribute pick
+      isSphereRoll: actor.system.gamesystem === 'mage' && !!dataset.sphere
     }
 
     // Render the template
@@ -158,26 +160,16 @@ export class wod5eAPI {
           label: game.i18n.localize('WOD5E.Cancel')
         }
       ],
-      classes: ['wod5e', actor.system.gamesystem],
-      render: (_event, dialog) => {
-        // A Mage Sphere roll takes a skill OR an attribute, never both
-        if (!(actor.system.gamesystem === 'mage' && dataset.sphere)) return
-        const skillElement = dialog.element.querySelector('#skillSelect')
-        const attributeElement = dialog.element.querySelector('#attributeSelect')
-        skillElement?.addEventListener('change', () => {
-          if (skillElement.value && attributeElement) attributeElement.value = ''
-        })
-        attributeElement?.addEventListener('change', () => {
-          if (attributeElement.value && skillElement) skillElement.value = ''
-        })
-      }
+      classes: ['wod5e', actor.system.gamesystem]
     })
 
     if (result !== 'cancel') {
       // Compile the selected data and send it to the roll function
       const skillSelect = result.skillSelect
-      const attributeSelect = result.attributeSelect
-      const attributeSelect2 = result.attributeSelect2
+      // A Mage Sphere roll is Sphere + Skill only
+      const isSphereRoll = actor.system.gamesystem === 'mage' && !!dataset.sphere
+      const attributeSelect = isSphereRoll ? '' : result.attributeSelect
+      const attributeSelect2 = isSphereRoll ? '' : result.attributeSelect2
       const disciplineSelect = result.disciplineSelect
       const bloodSurgeCheckbox = result.bloodSurge
       const renownSelect = result.renownSelect

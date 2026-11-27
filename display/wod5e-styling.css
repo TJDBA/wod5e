@@ -148,30 +148,19 @@
   border-color: #8fe2ff;
   box-shadow: 0 0 6px rgba(143, 226, 255, 0.6);
 }
-.wod5e.actor.sheet.mage .power-resource-dots .resource-value-step.active {
-  background: #4a154b;
-  border-color: #8fe2ff;
-}
-.wod5e.actor.sheet.mage .avatar-ratings .resource-value-step.active {
-  background: #4a154b;
+.wod5e.actor.sheet.mage .resource-value .resource-value-step.active,
+.wod5e.actor.sheet.mage .resource-value-static .resource-value-static-step.active {
+  background: #7e3fc0;
   border-color: #d4af37;
 }
 .wod5e.actor.sheet.mage .paradox .resource-value-step.active {
-  background: #9a0054;
-  border-color: #d8005a;
-  box-shadow: 0 0 4px rgba(216, 0, 90, 0.7);
+  background: #a3123a;
+  border-color: #40c8c8;
+  box-shadow: 0 0 4px rgba(163, 18, 58, 0.7);
 }
 .wod5e.actor.sheet.mage .paradox-button,
 .wod5e.actor.sheet.mage .paradox-roll i {
   color: #d8005a;
-}
-.wod5e.actor.sheet.mage .hubris .resource-counter-step[data-state='-'] {
-  background: #2d0031;
-  border-color: #4a154b;
-}
-.wod5e.actor.sheet.mage .hubris .resource-counter-step[data-state='/'] {
-  background: #9a0054;
-  border-color: #d8005a;
 }
 .wod5e.actor.sheet.mage .messy-critical {
   color: #8fe2ff;
@@ -189,10 +178,11 @@
 .paradox-dice img {
   box-shadow: 0 0 3px rgba(216, 0, 90, 0.6);
 }
-.dice-tooltip .dice-rolls .roll.paradox-die {
+.dice-tooltip .dice-rolls .roll.d10.paradox-die {
   background: #800020;
+  -webkit-mask: url('/icons/svg/d10-grey.svg') center / contain no-repeat;
+  mask: url('/icons/svg/d10-grey.svg') center / contain no-repeat;
   color: #40c8c8;
-  border-radius: 4px;
   font-weight: bold;
   text-shadow: none;
   filter: none;

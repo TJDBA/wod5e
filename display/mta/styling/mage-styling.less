@@ -12,6 +12,10 @@
 @toxic-magenta: #d8005a;
 @toxic-magenta-dark: #9a0054;
 @prime-gold: #d4af37;
+// Dice colors, also used for the sheet dots so they read on the dark sheet
+@royal-purple: #7e3fc0;
+@burgundy: #a3123a;
+@paradox-teal: #40c8c8;
 
 .wod5e.actor.sheet.mage {
   // Header + tab accents use the Ascension purple
@@ -30,45 +34,26 @@
     }
   }
 
-  // Sphere dots
-  .power-resource-dots .resource-value-step.active {
-    background: @ascension-purple;
-    border-color: @ice-blue;
-  }
-
-  // Arete / Avatar rating dots
-  .avatar-ratings .resource-value-step.active {
-    background: @ascension-purple;
+  // Every filled dot on the sheet (attributes, skills, spheres, Arete, Hubris,
+  // Quiet) is royal purple with a gold rim, to match the mage dice
+  .resource-value .resource-value-step.active,
+  .resource-value-static .resource-value-static-step.active {
+    background: @royal-purple;
     border-color: @prime-gold;
   }
 
   // Paradox track (advanced resource) reads as unstable magenta
   .paradox {
     .resource-value-step.active {
-      background: @toxic-magenta-dark;
-      border-color: @toxic-magenta;
-      box-shadow: 0 0 4px fade(@toxic-magenta, 70%);
+      background: @burgundy;
+      border-color: @paradox-teal;
+      box-shadow: 0 0 4px fade(@burgundy, 70%);
     }
   }
 
   .paradox-button,
   .paradox-roll i {
     color: @toxic-magenta;
-  }
-
-  // Hubris / Quiet degeneration track
-  .hubris {
-    .resource-counter-step {
-      &[data-state='-'] {
-        background: @ascension-purple-dark;
-        border-color: @ascension-purple;
-      }
-      // Quiet (the "stains" equivalent) shows in toxic magenta
-      &[data-state='/'] {
-        background: @toxic-magenta-dark;
-        border-color: @toxic-magenta;
-      }
-    }
   }
 
   // Roll result flavours reuse the shared messy/bestial classes; tint them Mage
@@ -96,11 +81,13 @@
   box-shadow: 0 0 3px fade(@toxic-magenta, 60%);
 }
 
-// Paradox dice in the chat card's dice list: burgundy with teal numbers
-.dice-tooltip .dice-rolls .roll.paradox-die {
+// Paradox dice in the chat card's dice list: a burgundy d10 with teal numbers.
+// The mask keeps Foundry's d10 shape while the fill turns it burgundy.
+.dice-tooltip .dice-rolls .roll.d10.paradox-die {
   background: #800020;
-  color: #40c8c8;
-  border-radius: 4px;
+  -webkit-mask: url('/icons/svg/d10-grey.svg') center / contain no-repeat;
+  mask: url('/icons/svg/d10-grey.svg') center / contain no-repeat;
+  color: @paradox-teal;
   font-weight: bold;
   text-shadow: none;
   filter: none;

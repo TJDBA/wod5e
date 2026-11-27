@@ -44,7 +44,7 @@ export const _onHubrisRoll = async function (event) {
         await actor.update({ 'system.hubris.quiet': 0 })
       } else {
         await actor.update({
-          'system.hubris.value': Math.min(hubris + 1, 6),
+          'system.hubris.value': Math.min(hubris + 1, 5),
           'system.hubris.quiet': 0
         })
 

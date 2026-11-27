@@ -1,8 +1,20 @@
 <div class="hubris">
-    <div class="resource-content">
-        <div class="resource-counter editable" data-states="/:quiet,-:value" data-value="{{hubris.value}}" data-quiet="{{hubris.quiet}}" data-name="system.hubris">
-            {{#numLoop 10}}
-            <span class="resource-counter-step" data-action="squareCounterChange" data-index="{{this}}" data-state=""></span>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-value" data-value="{{hubris.value}}" data-name="system.hubris.value">
+            <span class="resource-value-empty hubris-value" data-action="dotCounterEmpty"></span>
+            {{#numLoop 5}}
+            <span class="resource-value-step hubris-value" data-action="dotCounterChange" data-index="{{this}}"></span>
+            {{/numLoop}}
+        </div>
+    </div>
+</div>
+<div class="quiet">
+    <label class="resource-label field-header">{{localize "WOD5E.MTA.Quiet"}}</label>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-value" data-value="{{hubris.quiet}}" data-name="system.hubris.quiet">
+            <span class="resource-value-empty quiet-value" data-action="dotCounterEmpty"></span>
+            {{#numLoop 5}}
+            <span class="resource-value-step quiet-value" data-action="dotCounterChange" data-index="{{this}}"></span>
             {{/numLoop}}
         </div>
     </div>
