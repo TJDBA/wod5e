@@ -2,7 +2,7 @@
   "id": "wod5e-mta",
   "title": "World of Darkness 5e (+ Mage the Ascension)",
   "description": "World of Darkness 5e system for Foundry VTT, with added Mage: The Ascension 5th Edition (M5) support.",
-  "version": "5.3.28-mta.4",
+  "version": "5.3.28-mta.4.1",
   "compatibility": {
     "minimum": "13",
     "verified": "14.369",
